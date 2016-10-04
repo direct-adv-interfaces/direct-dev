@@ -1,5 +1,5 @@
 module.exports = {
     techs: {
-        devBemjson: require('./techs/dev-bemjson')
+        devPageBemjson: require('./techs/dev-page-bemjson')
     }
 };

@@ -3,11 +3,13 @@ var techs = require('../../index').techs;
 module.exports = function(config) {
 
     config.nodes('*.bundles/*', function(nodeConfig) {
+
         nodeConfig.addTechs([
-            [techs.devBemjson, { target: '?.dev.bemjson.js', bemjson: { block: 'xxx' } }],
-            [techs.devBemjson, { target: '?.test.bemjson.js', bemjson: { block: 'yyy' } }]
+            [techs.devPageBemjson, { target: '?.examples.bemjson.js', type: 'examples', js: ['?.js'], css: ['?.css'] }],
+            [techs.devPageBemjson, { target: '?.test.bemjson.js', type: 'test', js: ['?.js', '?.test.js'] }],
+            [techs.devPageBemjson, { js: ['?.js'], css: ['?.css'] }]
         ]);
 
-        nodeConfig.addTargets(['?.dev.bemjson.js', '?.test.bemjson.js']);
+        nodeConfig.addTargets(['?.examples.bemjson.js', '?.test.bemjson.js', '?.bemjson.js']);
     });
 };
