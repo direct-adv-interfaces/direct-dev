@@ -35,3 +35,7 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+# dev directories
+example-project/.enb/tmp
+example-project/desktop.bundles/index

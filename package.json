@@ -1,0 +1,33 @@
+{
+  "name": "direct-dev",
+  "version": "0.0.1",
+  "description": "Yandex Direct dev tools",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dima117/direct-dev.git"
+  },
+  "keywords": [
+    "bem",
+    "tools",
+    "enb",
+    "tests",
+    "sandbox",
+    "block",
+    "bundle",
+    "dev",
+    "debug"
+  ],
+  "author": "dima117a",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dima117/direct-dev/issues"
+  },
+  "homepage": "https://github.com/dima117/direct-dev#readme",
+  "dependencies": {
+    "enb": "^1.4.0"
+  }
+}
