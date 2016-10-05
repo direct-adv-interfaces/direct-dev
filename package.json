@@ -29,5 +29,10 @@
   "homepage": "https://github.com/dima117/direct-dev#readme",
   "dependencies": {
     "enb": "^1.4.0"
+  },
+  "devDependencies": {
+    "enb-bem-techs": "^2.2.1",
+    "enb-bemxjst": "^8.0.0",
+    "enb-xjst": "^2.1.0"
   }
 }

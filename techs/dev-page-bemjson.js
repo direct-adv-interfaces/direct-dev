@@ -7,9 +7,11 @@
  * **Опции**
  *
  * * *String* [target] — Результирующий таргет. По умолчанию `?.bemjson.js`.
+ * * *String* [block] — Название корневого блока.
  * * *String* [type] — Значение модификатора `type`.
- * * *String[]* [js] — Список js-таргетов для подключения к странице.
- * * *String[]* [css] — Список css-таргетов для подключения к странице.
+ * * *String* [js] — js-таргет для подключения к странице.
+ * * *String* [devJs] — js-таргет для подключения к странице вспомогательного кода (например, тестов).
+ * * *String* [css] — css-таргет для подключения к странице.
  *
  * **Пример**
  *
@@ -34,19 +36,23 @@ var helpers = require('../lib/helpers');
 module.exports = require('enb/lib/build-flow').create()
     .name('dev-page-bemjson')
     .target('target', '?.bemjson.js')
+    .defineOption('block', 'dev-page')
     .defineOption('type')
     .defineOption('js')
+    .defineOption('devJs')
     .defineOption('css')
     .builder(function() {
         var resolveFilename = helpers.getFilenameResolver(this.node),
-            bemjson = { block: 'dev-page' },
-            jsFiles = this._js,
-            cssFiles = this._css;
+            bemjson = {
+                block: this._block,
+                refs: {
+                    js: this._js && resolveFilename(this._js),
+                    devJs: this._devJs && resolveFilename(this._devJs),
+                    css: this._css &&resolveFilename(this._css)
+                }
+            };
 
         this._type && (bemjson.mods = { type: this._type });
-
-        helpers.isArray(jsFiles) && (bemjson.js = jsFiles.map(resolveFilename));
-        helpers.isArray(cssFiles) && (bemjson.css = cssFiles.map(resolveFilename));
 
         return '(' + JSON.stringify(bemjson) + ')';
     })
