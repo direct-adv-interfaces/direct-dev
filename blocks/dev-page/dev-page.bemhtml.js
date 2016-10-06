@@ -4,7 +4,9 @@ block('dev-page')(
     elem('body').tag()('body'),
     elem('title').tag()('title'),
     elem('meta').tag()('meta'),
-    elem('script').tag()('script'),
+    elem('script').def()(function() {
+        return '<script>' + (this.ctx.script || '') + '</script>';
+    }),
 
     elem('css')(
         tag()('link'),
@@ -36,7 +38,7 @@ block('dev-page')(
                     refs.css && { elem: 'css', url: refs.css }
                 ]
             },
-            { elem: 'body' }
+            { elem: 'body', refs: refs }
         ];
     })
 );

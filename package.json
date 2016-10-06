@@ -33,6 +33,8 @@
   "devDependencies": {
     "enb-bem-techs": "^2.2.1",
     "enb-bemxjst": "^8.0.0",
+    "enb-css": "^1.2.2",
+    "enb-js": "^1.1.0",
     "enb-xjst": "^2.1.0"
   }
 }
