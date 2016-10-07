@@ -5,6 +5,8 @@ if (typeof window.initMochaPhantomJS === 'function') {
 mocha.ui('bdd');
 mocha.setup({ timeout: 10000 });
 
+window.expect || (window.expect = chai.expect);
+
 (function() {
     var origCallPhantom = window.callPhantom;
 

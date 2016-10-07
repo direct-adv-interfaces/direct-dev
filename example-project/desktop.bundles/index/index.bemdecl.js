@@ -1,6 +1,6 @@
 exports.blocks = [
     {
-        "name": "dev-page"
+        "name": "b1"
     },
     {
         "name": "dev-page",
@@ -8,7 +8,7 @@ exports.blocks = [
             {
                 "name": "type",
                 "vals": [
-                    { "name": "examples" },
+                    { "name": "sandbox" },
                     { "name": "test" }
                 ]
             }

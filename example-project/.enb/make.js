@@ -19,9 +19,10 @@ module.exports = function(config) {
     config.nodes('*.bundles/*', function(nodeConfig) {
 
         nodeConfig.addTechs([
-            [techs.dev.devPageBemjson, { target: '?.examples.bemjson.js', type: 'examples', js: '?.js', css: '?.css' }],
-            [techs.dev.devPageBemjson, { target: '?.test.bemjson.js', type: 'test', js: '?.js', devJs2: '?.test.js', css: '?.css' }],
+            [techs.dev.devPageBemjson, { target: '?.sandbox.bemjson.js', type: 'sandbox', js: '?.js', devJs: '?.sandbox.js', css: '?.css' }],
+            [techs.dev.devPageBemjson, { target: '?.test.bemjson.js', type: 'test', js: '?.js', devJs: '?.test.js', css: '?.css' }],
             [techs.dev.devPageBemjson, { js: '?.js', css: '?.css' }],
+            [techs.dev.sandbox],
 
             [techs.enb.provideFile, { target: '?.bemdecl.js' }],
             [techs.bem.levels, { levels: levels }],
@@ -31,10 +32,10 @@ module.exports = function(config) {
             [techs.enb.browserJs, { target: '?.js' }],
             [techs.enb.css],
 
-            [techs.xjst.bemjsonToHtml, { target: '?.examples.html',  bemjsonFile: '?.examples.bemjson.js' }],
+            [techs.xjst.bemjsonToHtml, { target: '?.sandbox.html',  bemjsonFile: '?.sandbox.bemjson.js' }],
             [techs.xjst.bemjsonToHtml, { target: '?.test.html',  bemjsonFile: '?.test.bemjson.js' }]
         ]);
 
-        nodeConfig.addTargets(['?.examples.html', '?.test.html', '?.js', '?.css']);
+        nodeConfig.addTargets(['?.sandbox.html', '?.test.html', '?.js', '?.css', '?.sandbox.js']);
     });
 };
