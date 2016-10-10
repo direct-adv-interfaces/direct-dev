@@ -14,9 +14,12 @@ module.exports = require('enb/lib/build-flow').create()
             return vowFs.read(file.fullname, 'utf8').then(function(data) {
 
                 var filename = node.relativePath(file.fullname),
-                    src =  util.format('(function() {' +
-                    'var module = { exports: {} }, exports = module.exports; %s; module.exports.init && module.exports.init();' +
-                    '})();', data);
+                    src =  util.format('(function(window) {' +
+                        'var module = { exports: {} }, exports = module.exports; %s;' +
+                        '!window.SANDBOX && (window.SANDBOX = {});' +
+                        '!window.SANDBOX.blocks && (window.SANDBOX.blocks = []);' +
+                        'window.SANDBOX.blocks.push(module.exports);' +
+                    '})(window);', data);
 
                 return '/* begin: ' + filename + ' *' + '/\n' + src + '\n/* end: ' + filename + ' *' + '/';
             });

@@ -10,8 +10,8 @@ block('dev-page').mod('type', 'sandbox')(
             { elem: 'sandbox-container', attrs: { id: 'sandbox-container' } },
 
             refs.js && { elem: 'js', url: refs.js },
-            refs.devJs && { elem: 'js', url: refs.devJs }
-            //{ elem: 'script', script: 'window.mochaPhantomJS ? window.mochaPhantomJS.run() : window.mocha.run();' }
+            refs.devJs && { elem: 'js', url: refs.devJs },
+            { elem: 'script', script: 'window.SANDBOX && window.SANDBOX.init();' }
         ];
     })
 );

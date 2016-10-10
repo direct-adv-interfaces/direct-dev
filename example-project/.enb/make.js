@@ -1,4 +1,4 @@
-var levels = ['desktop.blocks', '../blocks'],
+var levels = ['../blocks', 'desktop.blocks'],
     techs = {
         dev: require('../../index').techs,
         bem: require('enb-bem-techs'),
