@@ -28,8 +28,8 @@
   },
   "homepage": "https://github.com/dima117/direct-dev#readme",
   "dependencies": {
-    "enb": "^1.4.0",
-    "vow-fs": "^0.3.6"
+    "enb": "^1.1.2",
+    "vow-fs": "^0.3.5"
   },
   "devDependencies": {
     "enb-bem-techs": "^2.2.1",
