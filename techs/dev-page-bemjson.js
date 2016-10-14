@@ -28,8 +28,6 @@
  * ```
  */
 
-var helpers = require('../lib/helpers');
-
 /**
  * @type {Tech}
  */
@@ -42,7 +40,9 @@ module.exports = require('enb/lib/build-flow').create()
     .defineOption('devJs')
     .defineOption('css')
     .builder(function() {
-        var resolveFilename = helpers.getFilenameResolver(this.node),
+        var resolveFilename = (function(target) {
+                return this.unmaskNodeTargetName(this.getPath(), target);
+            }).bind(this.node),
             bemjson = {
                 block: this._block,
                 refs: {
