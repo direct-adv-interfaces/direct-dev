@@ -1,3 +1,24 @@
+/**
+ * sandbox
+ * ===
+ *
+ * Собирает бандл для песочницы. Включает туда содержимое файлов .sandbox.js, обернутое
+ * в служебный код песочницы.
+ *
+ * **Опции**
+ *
+ * * *String* [target] — Результирующий таргет. По умолчанию `?.sandbox.js`.
+ *
+ * **Пример**
+ *
+ * ```javascript
+ *
+ *  var techs = require('direct-dev').techs;
+ *
+ *  nodeConfig.addTech(techs.devPageBemjson, { target: '?.sandbox.js' });
+ * ```
+ */
+
 var util = require('util'),
     vow = require('vow'),
     vowFs = require('vow-fs');

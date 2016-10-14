@@ -22,8 +22,9 @@
  *  nodeConfig.addTech(techs.devPageBemjson, {
  *      target: '?.bemjson.js',
  *      type: 'test',
- *      js: ['?.js', '?.test.js'],
- *      css: ['?.css']
+ *      js: '?.js',
+ *      devJs: '?.test.js',
+ *      css: '?.css'
  *  });
  * ```
  */
