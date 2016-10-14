@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dima117/direct-dev.git"
+    "url": "https://github.com/direct-adv-interfaces/direct-dev.git"
   },
   "keywords": [
     "bem",
@@ -24,9 +24,9 @@
   "author": "dima117a",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dima117/direct-dev/issues"
+    "url": "https://github.com/direct-adv-interfaces/direct-dev/issues"
   },
-  "homepage": "https://github.com/dima117/direct-dev#readme",
+  "homepage": "https://github.com/direct-adv-interfaces/direct-dev#readme",
   "dependencies": {
     "enb": "^1.1.2",
     "vow-fs": "^0.3.5"
