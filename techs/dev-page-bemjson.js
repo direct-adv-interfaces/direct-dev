@@ -55,6 +55,6 @@ module.exports = require('enb/lib/build-flow').create()
 
         this._type && (bemjson.mods = { type: this._type });
 
-        return '(' + JSON.stringify(bemjson) + ')';
+        return '(' + JSON.stringify(bemjson, null, 4) + ')';
     })
     .createTech();
