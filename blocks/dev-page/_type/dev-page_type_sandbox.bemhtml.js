@@ -11,7 +11,10 @@ block('dev-page').mod('type', 'sandbox')(
 
             refs.js && { elem: 'js', url: refs.js },
             refs.devJs && { elem: 'js', url: refs.devJs },
-            { elem: 'script', script: 'window.SANDBOX && window.SANDBOX.init();' }
+            {
+                elem: 'script',
+                script: 'window.SANDBOX && window.SANDBOX.init(document.getElementById(\'sandbox-container\'));'
+            }
         ];
     })
 );

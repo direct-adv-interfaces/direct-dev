@@ -7,9 +7,12 @@
 
 Пример:
 
-```
+```js
 module.exports = {
-    // любая нужная информация для размещения блока в песочнице
+
+    /**
+     * Любая нужная информация для размещения блока в песочнице 
+     */
     bemjson: {
         block: 'b1',
         data: { 
@@ -18,9 +21,13 @@ module.exports = {
         }
     },
     
-    // действия, которые нужно выполнить в начале
-    init: function() {
-        console.log(this.bemjson);
+    /**
+     * Действия, которые нужно выполнить в начале
+     * @param {Object} container - DOM-элемент контейнера для размещения блоков песочницы
+     */
+    init: function(container) {
+        
+        container.innerHTML += BEMHTML.apply(obj.bemjson);
     }
 };
 ```
@@ -32,10 +39,15 @@ module.exports = {
 Если для многих блоков нужно выполнять инициализацию одинаковым образом, вы можете на своем уровне 
 доопределить блок `dev-sandbox` и добавить собственную инициализацию.
  
-```
-SANDBOX.addInitializer(function(obj){
-    console.log('mi mi mi');
-    console.log(obj);
+```js
+/**
+ * Общая инициализация для всех блоков
+ * @param {Object} obj - Объект, экспортируемый из .sandbox.js файла блока
+ * @param {Object} container - DOM-элемент контейнера для размещения блоков песочницы
+ */
+SANDBOX.addInitializer(function(obj, container){
+    
+    container.innerHTML += BEMHTML.apply(obj.bemjson);
 }); 
 ```
 
