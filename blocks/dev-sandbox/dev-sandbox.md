@@ -27,7 +27,7 @@ module.exports = {
      */
     init: function(container) {
         
-        container.innerHTML += BEMHTML.apply(obj.bemjson);
+        container.innerHTML += BEMHTML.apply(this.bemjson);
     }
 };
 ```
