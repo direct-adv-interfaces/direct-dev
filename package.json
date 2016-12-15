@@ -4,7 +4,7 @@
   "description": "Yandex Direct dev tools",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "enb": "enb make --dir example-project"
   },
   "repository": {
     "type": "git",
@@ -28,7 +28,9 @@
   },
   "homepage": "https://github.com/direct-adv-interfaces/direct-dev#readme",
   "dependencies": {
+    "bem-naming": "^1.0.1",
     "enb": "^1.1.2",
+    "path-is-inside": "^1.0.2",
     "vow-fs": "^0.3.5"
   },
   "devDependencies": {

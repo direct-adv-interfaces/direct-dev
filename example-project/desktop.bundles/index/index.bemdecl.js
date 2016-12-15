@@ -3,6 +3,9 @@ exports.blocks = [
         "name": "b1"
     },
     {
+        "name": "b2"
+    },
+    {
         "name": "dev-page",
         "mods": [
             {
