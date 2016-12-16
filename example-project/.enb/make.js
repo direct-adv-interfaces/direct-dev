@@ -24,7 +24,7 @@ module.exports = function(config) {
             [techs.dev.devPageBemjson, { js: '?.js', css: '?.css' }],
             [techs.dev.sandbox],
             [techs.dev.jsTest, {
-                //targetLevels: ['desktop.blocks'],
+                targetLevels: ['desktop.blocks'],
                 targetBlock: 'b1'
             }],
 
