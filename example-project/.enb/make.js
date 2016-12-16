@@ -23,7 +23,10 @@ module.exports = function(config) {
             [techs.dev.devPageBemjson, { target: '?.test.bemjson.js', type: 'test', js: '?.js', devJs: '?.test.js', css: '?.css' }],
             [techs.dev.devPageBemjson, { js: '?.js', css: '?.css' }],
             [techs.dev.sandbox],
-            [techs.dev.jsTest, { targetLevels: ['desktop.blocks'] }],
+            [techs.dev.jsTest, {
+                //targetLevels: ['desktop.blocks'],
+                targetBlock: 'b1'
+            }],
 
             [techs.enb.provideFile, { target: '?.bemdecl.js' }],
             [techs.bem.levels, { levels: levels }],
@@ -37,6 +40,7 @@ module.exports = function(config) {
             [techs.xjst.bemjsonToHtml, { target: '?.test.html',  bemjsonFile: '?.test.bemjson.js' }]
         ]);
 
-        nodeConfig.addTargets(['?.sandbox.html', '?.test.html', '?.js', '?.css', '?.sandbox.js', '?.test.js']);
+        //nodeConfig.addTargets(['?.sandbox.html', '?.test.html', '?.js', '?.css', '?.sandbox.js', '?.test.js']);
+        nodeConfig.addTargets(['?.test.js']);
     });
 };

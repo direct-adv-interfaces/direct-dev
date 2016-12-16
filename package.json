@@ -4,7 +4,7 @@
   "description": "Yandex Direct dev tools",
   "main": "index.js",
   "scripts": {
-    "enb": "enb make --dir example-project"
+    "enb": "enb make --dir example-project --profiler"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,7 @@
   "dependencies": {
     "bem-naming": "^1.0.1",
     "enb": "^1.1.2",
+    "lodash": "^4.17.2",
     "path-is-inside": "^1.0.2",
     "vow-fs": "^0.3.5"
   },
