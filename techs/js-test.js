@@ -24,6 +24,7 @@ module.exports = require('enb/lib/build-flow').create()
          * @returns {Array}
          */
         getArrayOption: function(name) {
+            // todo@dima117a вынести в хелперы
             return [].concat(this.getOption(name, []));
         },
 

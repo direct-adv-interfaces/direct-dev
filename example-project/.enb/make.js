@@ -19,7 +19,7 @@ module.exports = function(config) {
     config.nodes('*.bundles/*', function(nodeConfig) {
 
         nodeConfig.addTechs([
-            [techs.dev.devPageBemjson, { target: '?.sandbox.bemjson.js', type: 'sandbox', js: '?.js', devJs: '?.sandbox.js', css: '?.css' }],
+            [techs.dev.devDeclaration, { entities: ['b1', 'input__el1', 'select_theme_islands'] }],
             [techs.dev.devPageBemjson, { target: '?.test.bemjson.js', type: 'test', js: '?.js', devJs: '?.test.js', css: '?.css' }],
             [techs.dev.devPageBemjson, { js: '?.js', css: '?.css' }],
             [techs.dev.sandbox],
@@ -28,7 +28,7 @@ module.exports = function(config) {
                 targetBlock: 'b1'
             }],
 
-            [techs.enb.provideFile, { target: '?.bemdecl.js' }],
+            //[techs.enb.provideFile, { target: '?.bemdecl.js' }],
             [techs.bem.levels, { levels: levels }],
             [techs.bem.depsOld],
             [techs.bem.files],

@@ -1,20 +1,14 @@
-exports.blocks = [
+exports.deps = [
     {
-        "name": "b1"
+        "block": "b1"
     },
     {
-        "name": "b2"
+        "block": "input",
+        "elem": "el1"
     },
     {
-        "name": "dev-page",
-        "mods": [
-            {
-                "name": "type",
-                "vals": [
-                    { "name": "sandbox" },
-                    { "name": "test" }
-                ]
-            }
-        ]
+        "block": "select",
+        "mod": "theme",
+        "val": "islands"
     }
-];
+]
