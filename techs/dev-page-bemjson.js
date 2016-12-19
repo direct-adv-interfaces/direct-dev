@@ -37,9 +37,9 @@ module.exports = require('enb/lib/build-flow').create()
     .target('target', '?.bemjson.js')
     .defineOption('block', 'dev-page')
     .defineOption('type')
-    .defineOption('js')
-    .defineOption('devJs')
-    .defineOption('css')
+    .dependOn('js')
+    .dependOn('devJs')
+    .dependOn('css')
     .builder(function() {
         var resolveFilename = (function(target) {
                 return this.unmaskNodeTargetName(this.getPath(), target);

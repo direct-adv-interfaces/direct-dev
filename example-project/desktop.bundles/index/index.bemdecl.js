@@ -1,5 +1,13 @@
 exports.deps = [
     {
+        "block": "dev-page"
+    },
+    {
+        "block": "dev-page",
+        "mod": "type",
+        "val": "test"
+    },
+    {
         "block": "b1"
     },
     {
