@@ -41,9 +41,9 @@ var vow = require('vow'),
 
         phantomInstancesCount++;
 
-        proc.stdout.on('data', function() {
-           console.log(arguments);
-        });
+        // proc.stdout.on('data', function() {
+        //    console.log(arguments);
+        // });
 
         proc.stderr.on('data', function(err) {
             console.log('ERROR: %s', err);
@@ -88,11 +88,9 @@ module.exports = require('enb/lib/build-flow').create()
                     webSecurityEnabled: false
                 }
             }),
-            cmd = `phantomjs "${mochaPhantomjsPath}" "${sourceTargetFilePath}" json '${config}' > ${tmpTargetFilePath}`;
-            //cmd = `phantomjs '${mochaPhantomjsPath}' '${sourceTargetFilePath}' '${mochaReporterPath}' '${config}'`;
+            cmd = `phantomjs '${mochaPhantomjsPath}' '${sourceTargetFilePath}' '${mochaReporterPath}' '${config}'`;
 
-        console.info('[i] Page was sent to Phantom');
-        console.info(`[i] ${cmd}`);
+        //console.info(`[i] Page was sent to Phantom: ${cmd}`);
 
         function runPhantom() {
             runAsync(cmd)
