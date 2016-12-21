@@ -1,11 +1,9 @@
 'use strict';
 
-const _ = require('lodash');
 const vow = require('vow');
 const vowFs = require('vow-fs');
 const path = require('path');
-const bemNaming = require('bem-naming');
-const pathIsInside = require('path-is-inside');
+const techUtils = require('../lib/utils');
 
 module.exports = require('enb/lib/build-flow').create()
     .name('js-test')
@@ -19,7 +17,6 @@ module.exports = require('enb/lib/build-flow').create()
          * Возвращает массив значений для заданной опции технологии
          * - если значение - не массив, создает массив из одного элемента
          * - если значение не задано, возвращает пустой массив
-         * @param {Object} ctx Технология ENB
          * @param {String} name Название опции
          * @returns {Array}
          */
@@ -36,30 +33,6 @@ module.exports = require('enb/lib/build-flow').create()
         normalizeLevel: function(level) {
             typeof level === 'string' && (level = { path: level });
             return path.resolve(this.node.getRootDir(), level.path);
-        },
-
-        /**
-         * Проверяет, соответствует ли файл заданным фильтрам
-         * @param {String} fileInfo Полный путь к файлу
-         * @returns {boolean}
-         */
-        applyFilter: function(fileInfo) {
-            const targetLevels = this.filter.targetLevels;
-
-            if (this.filter.targetBlock) {
-                let baseName = path.basename(fileInfo.fullname).split('.')[0];
-                let entity = bemNaming.parse(baseName);
-
-                if (entity.block !== this.filter.targetBlock) {
-                    return false;
-                }
-            }
-
-            if (targetLevels.length && !_.some(targetLevels, pathIsInside.bind(this, fileInfo.fullname))) {
-                return false;
-            }
-
-            return true;
         },
 
         /**
@@ -84,7 +57,7 @@ module.exports = require('enb/lib/build-flow').create()
     })
     .builder(function(paths) {
         return vow.all(paths
-            .filter(file => this.applyFilter(file))
+            .filter(techUtils.createFilter(this.filter, file => file.fullname))
             .map(file => this.getContent(file))
         ).then(files => files.join('\n'));
     })

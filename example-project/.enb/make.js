@@ -1,6 +1,6 @@
 var levels = ['../blocks', 'common.blocks', 'desktop.blocks'],
     techs = {
-        dev: require('../../index').techs,
+        dev: require('../../lib/index').techs,
         bem: require('enb-bem-techs'),
         enb: {
             provideFile: require('enb/techs/file-provider'),
@@ -12,10 +12,15 @@ var levels = ['../blocks', 'common.blocks', 'desktop.blocks'],
             bemhtml: require('enb-bemxjst/techs/bemhtml')
         }
     },
-    transporterPlugins = require('../../index').transporterPlugins;
+    transporterPlugins = require('../../lib/index').transporterPlugins;
 
 
 module.exports = function(config) {
+
+    // todo@dima117a вынести логику фильтров в отдельный модуль
+    const targetLevels = ['desktop.blocks'];
+    const targetBlock = 'b1';
+    const rootPath = config.getRootPath();
 
     config.nodes('*.bundles/*', function(nodeConfig) {
 
@@ -23,10 +28,7 @@ module.exports = function(config) {
             [techs.dev.devDeclaration, { entities: ['dev-page', 'dev-page_type_test', 'b1', 'input__el1', 'select_theme_islands'] }],
             [techs.dev.devPageBemjson, { type: 'test', js: '?.js', devJs: '?.test.js', css: '?.css' }],
             [techs.dev.sandbox],
-            [techs.dev.jsTest, {
-                targetLevels: ['desktop.blocks'],
-                targetBlock: 'b1'
-            }],
+            [techs.dev.jsTest, { targetLevels: targetLevels, targetBlock: targetBlock }],
 
             [techs.dev.phantomTesting],
 
@@ -39,7 +41,13 @@ module.exports = function(config) {
             [techs.dev.transporter('js'), {
                 target: '?.js',
                 apply: [
-                    transporterPlugins.wrap()
+                    transporterPlugins.wrap(),
+                    transporterPlugins.bemFilter(
+                        targetLevels,
+                        targetBlock,
+                        rootPath,
+                        transporterPlugins.wrap({ before: '\n// <<<\n', after: '\n// >>>\n' })
+                    )
                 ]
             }],
             [techs.enb.css],

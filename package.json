@@ -2,7 +2,7 @@
   "name": "direct-dev",
   "version": "0.1.2",
   "description": "Yandex Direct dev tools",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "enb": "enb make --dir example-project"
   },
@@ -32,6 +32,7 @@
     "enb": "^1.1.2",
     "gulp": "^3.9.1",
     "gulp-debug": "^3.0.0",
+    "gulp-if": "^2.0.2",
     "gulp-util": "^3.0.7",
     "lodash": "^4.17.2",
     "mocha-phantomjs-core": "^2.1.1",
