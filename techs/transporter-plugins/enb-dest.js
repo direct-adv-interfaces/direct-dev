@@ -5,13 +5,13 @@ module.exports = function(deferred) {
     let result = [];
 
     return through.obj(
-        function(file, enc, cb) {
+        function(file, encoding, cb) {
             if (file.isNull()) return cb(null, file);
 
             if (file.isStream()) {
                 this.emit('error', new PluginError('wrap', 'Streams not supported!'));
             } else {
-                file.isBuffer() && (result.push(file.contents.toString(enc)));
+                file.isBuffer() && (result.push(file.contents.toString(encoding)));
                 cb(null, file);
             }
         },

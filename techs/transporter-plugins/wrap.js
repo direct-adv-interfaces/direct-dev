@@ -8,7 +8,7 @@ module.exports = function(options) {
     options.before = lodash.template(options.before);
     options.after = lodash.template(options.after);
 
-    return through.obj(function(file, enc, cb) {
+    return through.obj(function(file, encoding, cb) {
         if (file.isNull()) {
             return cb(null, file);
         }

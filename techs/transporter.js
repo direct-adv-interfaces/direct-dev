@@ -16,7 +16,7 @@ module.exports = function(ext) {
                 paths = files.filter(file => !file.isDirectory).map(file => file.fullname);
 
             this.getOption('apply', [])
-                .reduce((stream, el) => stream.pipe(el), gulp.src(paths))
+                .reduce((stream, plugin) => stream.pipe(plugin), gulp.src(paths))
                 .pipe(enbDest(deferred));
 
             return deferred.promise();
