@@ -38,4 +38,4 @@ jspm_packages
 
 # dev directories
 example-project/.enb/tmp
-example-project/desktop.bundles/index
+example-project/desktop.bundles

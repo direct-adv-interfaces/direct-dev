@@ -11,7 +11,8 @@ var levels = ['../blocks', 'common.blocks', 'desktop.blocks'],
             bemjsonToHtml: require('enb-bemxjst/techs/bemjson-to-html'),
             bemhtml: require('enb-bemxjst/techs/bemhtml')
         }
-    };
+    },
+    transporterPlugins = require('../../index').transporterPlugins;
 
 
 module.exports = function(config) {
@@ -34,7 +35,13 @@ module.exports = function(config) {
             [techs.bem.depsOld],
             [techs.bem.files],
             [techs.xjst.bemhtml],
-            [techs.enb.browserJs, { target: '?.js' }],
+            //[techs.enb.browserJs, { target: '?.js' }],
+            [techs.dev.transporter('js'), {
+                target: '?.js',
+                apply: [
+                    transporterPlugins.wrap()
+                ]
+            }],
             [techs.enb.css],
 
             [techs.xjst.bemjsonToHtml, { target: '?.sandbox.html',  bemjsonFile: '?.sandbox.bemjson.js' }],
