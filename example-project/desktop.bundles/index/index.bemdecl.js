@@ -11,6 +11,9 @@ exports.deps = [
         "block": "b1"
     },
     {
+        "block": "b2"
+    },
+    {
         "block": "input",
         "elem": "el1"
     },

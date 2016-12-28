@@ -1,53 +1,56 @@
-var levels = ['../blocks', 'common.blocks', 'desktop.blocks'],
-    techs = {
-        dev: require('../../lib/index').techs,
-        bem: require('enb-bem-techs'),
-        enb: {
-            provideFile: require('enb/techs/file-provider'),
-            browserJs: require('enb-js/techs/browser-js'),
-            css: require('enb-css/techs/css')
-        },
-        xjst: {
-            bemjsonToHtml: require('enb-bemxjst/techs/bemjson-to-html'),
-            bemhtml: require('enb-bemxjst/techs/bemhtml')
-        }
+const levels = ['../blocks', 'common.blocks', 'desktop.blocks'];
+const transporterPlugins = require('../../lib/index').transporterPlugins;
+const techs = {
+    dev: require('../../lib/index').techs,
+    bem: require('enb-bem-techs'),
+    enb: {
+        provideFile: require('enb/techs/file-provider'),
+        browserJs: require('enb-js/techs/browser-js'),
+        css: require('enb-css/techs/css')
     },
-    transporterPlugins = require('../../lib/index').transporterPlugins;
+    xjst: {
+        bemjsonToHtml: require('enb-bemxjst/techs/bemjson-to-html'),
+        bemhtml: require('enb-bemxjst/techs/bemhtml')
+    }
+};
 
+const BlockFilter = require('../../lib/block-filter');
 
 module.exports = function(config) {
 
-    // todo@dima117a вынести логику фильтров в отдельный модуль
-    const targetLevels = ['desktop.blocks'];
-    const targetBlock = 'b1';
-    const rootPath = config.getRootPath();
+    const filter = new BlockFilter(
+        { targetBlock: 'b1', targetLevels: ['desktop.blocks'] },
+        { rootPath: config.getRootPath() }
+    );
 
     config.nodes('*.bundles/*', function(nodeConfig) {
 
         nodeConfig.addTechs([
-            [techs.dev.devDeclaration, { entities: ['dev-page', 'dev-page_type_test', 'b1', 'input__el1', 'select_theme_islands'] }],
+
+            // bundle endpoint
+            [techs.dev.devDeclaration, { entities: ['dev-page', 'dev-page_type_test', 'b1', 'b2', 'input__el1', 'select_theme_islands'] }],
             [techs.dev.devPageBemjson, { type: 'test', js: '?.js', devJs: '?.test.js', css: '?.css' }],
-            [techs.dev.sandbox],
-            [techs.dev.jsTest, { targetLevels: targetLevels, targetBlock: targetBlock }],
-
-            [techs.dev.phantomTesting],
-
             //[techs.enb.provideFile, { target: '?.bemdecl.js' }],
+
+            // essential
             [techs.bem.levels, { levels: levels }],
             [techs.bem.depsOld],
             [techs.bem.files],
+
+            // dev bundles
+            [techs.dev.sandbox],
+            [techs.dev.jsTest, { filter: filter }],
+            [techs.dev.phantomTesting],
+
             [techs.xjst.bemhtml],
             //[techs.enb.browserJs, { target: '?.js' }],
             [techs.dev.transporter('js'), {
                 target: '?.js',
                 apply: [
-                    transporterPlugins.wrap(),
-                    transporterPlugins.bemFilter(
-                        targetLevels,
-                        targetBlock,
-                        rootPath,
-                        transporterPlugins.wrap({ before: '\n// <<<\n', after: '\n// >>>\n' })
-                    )
+                    transporterPlugins.gulpIf(
+                        filter.vinyl, // фильтр блоков
+                        transporterPlugins.wrap({ before: '\n// # inner-begin\n', after: '\n// # inner-end\n' })),
+                    transporterPlugins.wrap({ before: '\n// # outer-begin\n', after: '\n// # outer-end\n' })
                 ]
             }],
             [techs.enb.css],
