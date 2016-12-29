@@ -40,7 +40,8 @@ module.exports = function(config) {
             // dev bundles
             [techs.dev.sandbox],
             [techs.dev.jsTest, { filter: filter }],
-            [techs.dev.phantomTesting],
+            //[techs.dev.phantomTesting],
+            [techs.dev.emptyTestResult, { coverage: true, filter: filter }],
 
             [techs.xjst.bemhtml],
             //[techs.enb.browserJs, { target: '?.js' }],
