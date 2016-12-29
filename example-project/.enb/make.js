@@ -49,7 +49,7 @@ module.exports = function(config) {
                 apply: [
                     transporterPlugins.gulpIf(
                         filter.vinyl, // фильтр блоков
-                        transporterPlugins.wrap({ before: '\n// # inner-begin\n', after: '\n// # inner-end\n' })),
+                        transporterPlugins.coverage()), // считаем coverage
                     transporterPlugins.wrap({ before: '\n// # outer-begin\n', after: '\n// # outer-end\n' })
                 ]
             }],
