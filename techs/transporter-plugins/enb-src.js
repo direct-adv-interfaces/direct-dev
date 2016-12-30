@@ -26,8 +26,6 @@ SrcLoader.obj = function(paths, options) {
 };
 
 SrcLoader.prototype._read = function () {
-    const stream = this;
-
     vow.all(this.__paths.map(file => vowFs
             .read(file.fullname, 'utf8')
             .then(content => new Vinyl({
@@ -35,10 +33,12 @@ SrcLoader.prototype._read = function () {
                   contents: Buffer.from(content)
             }))
         ))
-        .then(vinyls => {
-            vinyls.forEach(file => { stream.push(file); });
-            stream.push(null);
-        });
+        .then(
+            vinyls => {
+                vinyls.forEach(file => { this.push(file); });
+                this.push(null);
+            },
+            err => { process.nextTick(() => this.emit('error', err)); });
 };
 
 module.exports = SrcLoader;
