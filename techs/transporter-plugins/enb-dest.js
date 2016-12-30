@@ -6,14 +6,19 @@ module.exports = function(deferred) {
 
     return through.obj(
         function(file, encoding, cb) {
-            if (file.isNull()) return cb(null, file);
+            if (file.isNull()) {
+                cb();
+                return;
+            }
 
             if (file.isStream()) {
-                this.emit('error', new PluginError('wrap', 'Streams not supported!'));
-            } else {
-                file.isBuffer() && (result.push(file.contents.toString(encoding)));
-                cb(null, file);
+                cb(new PluginError('wrap', 'Streams not supported!'));
+                return;
             }
+
+            file.isBuffer() && (result.push(file.contents.toString(encoding)));
+
+            cb();
         },
         function(){
             deferred.resolve(result.join(''));
