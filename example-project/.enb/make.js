@@ -40,14 +40,15 @@ module.exports = function(config) {
             // dev bundles
             [techs.dev.sandbox],
             [techs.dev.jsTest, { filter: filter }],
-            //[techs.dev.phantomTesting],
-            [techs.dev.emptyTestResult, { coverage: true, filter: filter }],
+            [techs.dev.phantomTesting],
+            //[techs.dev.emptyTestResult, { coverage: true, filter: filter }],
 
             [techs.xjst.bemhtml],
             //[techs.enb.browserJs, { target: '?.js' }],
             [techs.dev.transporter('js'), {
                 target: '?.js',
                 apply: [
+                    // transporterPlugins.debug(),
                     transporterPlugins.gulpIf(
                         filter.vinyl, // фильтр блоков
                         transporterPlugins.coverage()), // считаем coverage

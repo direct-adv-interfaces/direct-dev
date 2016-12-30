@@ -2,7 +2,9 @@
 
 const buildFlow = require('enb/lib/build-flow');
 const vow = require('vow');
-const gulp = require('gulp');
+const vowFs = require('vow-fs');
+const Vinyl = require('vinyl');
+const streamFromArray = require('stream-from-array');
 const enbDest = require('./transporter-plugins/enb-dest');
 
 module.exports = function(ext) {
@@ -11,16 +13,27 @@ module.exports = function(ext) {
         .target('target', '?.merged.js')
         .defineOption('apply')
         .useFileList(ext)
-        .builder(function(files) {
-            let deferred = vow.defer(),
-                paths = files.filter(file => !file.isDirectory).map(file => file.fullname);
+        .builder(function(paths) {
 
-            this.getOption('apply', [])
-                .filter(Boolean)
-                .reduce((stream, plugin) => stream.pipe(plugin), gulp.src(paths))
-                .pipe(enbDest(deferred));
+            return vow.all(paths
+                .map(file => {
+                    return vowFs
+                        .read(file.fullname, 'utf8')
+                        .then(content => new Vinyl({
+                              path: file.fullname,
+                              contents: Buffer.from(content)
+                        }));
+                })
+            ).then(vinyls => {
+                let deferred = vow.defer();
 
-            return deferred.promise();
+                this.getOption('apply', [])
+                    .filter(Boolean)
+                    .reduce((stream, plugin) => stream.pipe(plugin), streamFromArray.obj(vinyls))
+                    .pipe(enbDest(deferred));
+
+                return deferred.promise();
+            });
         })
         .needRebuild(function() { return true; })
         .createTech();
