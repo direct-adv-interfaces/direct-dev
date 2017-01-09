@@ -1,8 +1,11 @@
 module.exports = {
-    xxx: 1,
-    yyy: 'ddd',
+    levels: [
+        'example-project/common.blocks',
+        'example-project/desktop.blocks'
+    ],
     profiles: {
-        p1: { xxx: 'p111' },
-        p2: { xxx: 'p222', yyy: 'asd' }
+        'generate-test-bundles': {
+            handler: './walker-plugins/test-bundler'
+        }
     }
 };
