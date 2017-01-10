@@ -5,7 +5,7 @@ module.exports = {
     ],
     profiles: {
         'generate-test-bundles': {
-            handler: './walker-plugins/test-bundler'
+            handler: './walker-plugins/test-reporter-console'
         }
     }
 };
