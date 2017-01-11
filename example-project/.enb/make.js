@@ -62,6 +62,6 @@ module.exports = function(config) {
         ]);
 
         //nodeConfig.addTargets(['?.sandbox.html', '?.test.html', '?.js', '?.css', '?.sandbox.js', '?.test.js']);
-        nodeConfig.addTargets(['?.phantomjs']);
+        nodeConfig.addTargets(['?.test-result.json']);
     });
 };

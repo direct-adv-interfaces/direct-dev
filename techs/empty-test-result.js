@@ -23,7 +23,7 @@ function createEmptyResultString(coverage) {
 
 module.exports = require('enb/lib/build-flow').create()
     .name('empty-test-result')
-    .target('target', '?.phantomjs')
+    .target('target', '?.test-result.json')
     .defineOption('coverage')
     .defineOption('filter')
     .useFileList('js')

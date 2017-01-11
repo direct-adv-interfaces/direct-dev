@@ -7,7 +7,7 @@
  *
  * **Опции**
  *
- * * *String* **target** — Результирующий таргет. По умолчанию `?.phantomjs`.
+ * * *String* **target** — Результирующий таргет. По умолчанию `?.test-result.json`.
  * * *String* **js** — Зависимость от таргета сборки тестируемого js файла. По умолчанию `?.js`.
  * * *String* **testjs** — Зависимость от таргета сборки файла с тестами. По умолчанию `?.test.js`.
  * * *String* **html** — Таргет, собирающий тестовую страницу для запуска через phantomjs. По умолчанию `?.html`.
@@ -16,7 +16,7 @@
  *
  * ```javascript
  *  nodeConfig.addTech(require('./enb-techs/tests/phantomjs'), {
- *      target: '?.phantomjs',
+ *      target: '?.test-result.json',
  *      js: '?.ru.js',
  *      testjs: '?.test.js',
  *      html: '?.html'
@@ -63,11 +63,11 @@ var vow = require('vow'),
  */
 module.exports = require('enb/lib/build-flow').create()
     .name('phantom-testing')
-    .target('target', '?.phantomjs')
+    .target('target', '?.test-result.json')
     .dependOn('js', '?.js')
     .dependOn('testjs', '?.test.js')
     .dependOn('html', '?.html')
-    .defineOption('tmpTarget', '?.phantomjs.tmp')
+    .defineOption('tmpTarget', '?.test-result.tmp')
     .methods({
         resolveTargetPath: function(target) {
             let nodePath = this.node.getPath();
