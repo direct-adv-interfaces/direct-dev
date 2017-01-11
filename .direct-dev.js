@@ -4,11 +4,21 @@ module.exports = {
         'example-project/desktop.blocks'
     ],
     profiles: {
-        'generate-test-bundles': {
+        'test-bundles': {
             handler: './walker-plugins/test-bundler'
         },
-        'generate-test-report': {
-            handler: './walker-plugins/test-reporter-console',
+        'test-report': {
+            handler: './walker-plugins/test-reporter',
+            handlerConfig: {
+                reporter: 'console'
+            },
+            levels: ['example-project/desktop.bundles']
+        },
+        'test-report-teamcity': {
+            handler: './walker-plugins/test-reporter',
+            handlerConfig: {
+                reporter: 'teamcity'
+            },
             levels: ['example-project/desktop.bundles']
         }
     }
