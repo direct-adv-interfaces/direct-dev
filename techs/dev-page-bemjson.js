@@ -49,7 +49,7 @@ module.exports = require('enb/lib/build-flow').create()
                 refs: {
                     js: this._js && resolveFilename(this._js),
                     devJs: this._devJs && resolveFilename(this._devJs),
-                    css: this._css &&resolveFilename(this._css)
+                    css: this._css && resolveFilename(this._css)
                 }
             };
 
