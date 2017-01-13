@@ -28,6 +28,13 @@ module.exports = {
                 reporter: 'teamcity'
             },
             levels: ['example-project/desktop.bundles']
+        },
+        'coverage-report': {
+            handler: './walker-plugins/coverage-reporter',
+            handlerConfig: {
+                reporter: 'console'
+            },
+            levels: ['example-project/desktop.bundles']
         }
     }
 };
