@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * sandbox
  * ===
@@ -8,30 +10,38 @@
  * **Опции**
  *
  * * *String* [target] — Результирующий таргет. По умолчанию `?.sandbox.js`.
+ * * *BlockFilter* [filter] — Фильтр по названию блока и уровням переопределения. По умолчанию - не указан.
  *
  * **Пример**
  *
  * ```javascript
  *
- *  var techs = require('direct-dev').techs;
+ *  const techs = require('direct-dev').techs;
+ *
+ *  const filter = new BlockFilter(
+ *      { targetBlock: 'block-name', targetLevels: ['source.blocks'] },
+ *      { rootPath: config.getRootPath() }
+ *  );
  *
  *  nodeConfig.addTech(techs.devPageBemjson, { target: '?.sandbox.js' });
  * ```
  */
 
-var util = require('util'),
-    vow = require('vow'),
-    vowFs = require('vow-fs');
+const util = require('util');
+const vow = require('vow');
+const vowFs = require('vow-fs');
+const BlockFilter = require('../lib/block-filter');
 
 module.exports = require('enb/lib/build-flow').create()
     .name('sandbox')
     .target('target', '?.sandbox.js')
+    .defineOption('filter')
     .useFileList('sandbox.js')
     .builder(function(paths) {
-        var node = this.node;
+        const node = this.node;
+        const filter = this.getOption('filter', BlockFilter.empty);
 
-        return vow.all(paths.map(function(file) {
-
+        return vow.all(paths.filter(filter.enb).map(function(file) {
             return vowFs.read(file.fullname, 'utf8').then(function(data) {
 
                 var filename = node.relativePath(file.fullname),
