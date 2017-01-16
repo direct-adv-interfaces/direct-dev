@@ -4,7 +4,7 @@
   "description": "Yandex Direct dev tools",
   "main": "lib/index.js",
   "scripts": {
-    "enb": "enb make --dir example-project",
+    "enb": "enb make --no-cache --dir example-project",
     "walker": "node lib/walker-cli.js -p test-report"
   },
   "repository": {
