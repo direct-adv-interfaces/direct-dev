@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "enb": "enb make --dir example-project",
-    "walker": "node lib/walker-cli.js -p coverage-report"
+    "walker": "node lib/walker-cli.js -p test-report"
   },
   "repository": {
     "type": "git",

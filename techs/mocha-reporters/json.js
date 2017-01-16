@@ -28,31 +28,24 @@
  * ```
  * */
 
-
 /**
- * Module dependencies.
+ * Зависимости модуля
  */
 
 var Base, log;
 
 if (typeof window === 'undefined') {
-    // running in Node
+    // выполняемся в Node
     Base = require('mocha').reporters.Base;
     log = console.log;
 } else {
-    // running in mocha-phantomjs
+    // выполняемся в mocha-phantomjs
     Base = require('./base');
     log = function(msg) { process.stdout.write(msg + '\n'); };
 }
 
 /**
- * Expose `JSON`.
- */
-
-exports = module.exports = JSONReporter;
-
-/**
- * Initialize a new `JSON` reporter.
+ * Инициализирует новый `JSON` reporter.
  *
  * @api public
  * @param {Runner} runner
@@ -101,8 +94,7 @@ function JSONReporter(runner) {
 }
 
 /**
- * Return a plain-object representation of `test`
- * free of cyclic properties etc.
+ * Возвращает объект с результатами тестов (без циклических ссылок и т.п.)
  *
  * @api private
  * @param {Object} test
@@ -118,7 +110,7 @@ function clean(test) {
 }
 
 /**
- * Transform `error` into a JSON object.
+ * Преобразует `error` в JSON объект
  *
  * @api private
  * @param {Error} err
@@ -132,3 +124,5 @@ function errorJSON(err) {
         }, err);
     return res;
 }
+
+module.exports = JSONReporter;
