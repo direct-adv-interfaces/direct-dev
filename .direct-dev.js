@@ -32,7 +32,8 @@ module.exports = {
         'coverage-report': {
             handler: './walker-plugins/coverage-reporter',
             handlerConfig: {
-                reporter: 'html'
+                reporter: 'html',
+                dir: 'mimimi'
             },
             levels: ['example-project/desktop.bundles']
         }
