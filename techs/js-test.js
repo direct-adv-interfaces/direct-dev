@@ -23,5 +23,4 @@ module.exports = require('enb/lib/build-flow').create()
             })
         ).then(files => files.join('\n'));
     })
-    .needRebuild(function() { return true; })
     .createTech();

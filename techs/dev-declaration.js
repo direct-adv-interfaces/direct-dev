@@ -4,7 +4,6 @@ module.exports = require('enb/lib/build-flow').create()
     .name('dev-declaration')
     .target('target', '?.bemdecl.js')
     .defineOption('entities')
-    .needRebuild(function(){ return true; })
     .methods({
         /**
          * Возвращает массив значений для заданной опции технологии

@@ -21,6 +21,5 @@ module.exports = function(ext) {
 
             return deferred.promise();
         })
-        .needRebuild(function() { return true; })
         .createTech();
 };

@@ -51,5 +51,4 @@ module.exports = require('enb/lib/build-flow').create()
             return createEmptyResultString();
         }
     })
-    .needRebuild(function() { return true; })
     .createTech();
