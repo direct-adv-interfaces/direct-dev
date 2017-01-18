@@ -1,37 +1,7 @@
 /**
- * dev-page-bemjson
- * ===
- *
- * Генерирует bemjson.js с блоком `dev-page`.
- *
- * **Опции**
- *
- * * *String* [target] — Результирующий таргет. По умолчанию `?.bemjson.js`.
- * * *String* [block] — Название корневого блока.
- * * *String* [type] — Значение модификатора `type`.
- * * *String* [js] — js-таргет для подключения к странице.
- * * *String* [devJs] — js-таргет для подключения к странице вспомогательного кода (например, тестов).
- * * *String* [css] — css-таргет для подключения к странице.
- *
- * **Пример**
- *
- * ```javascript
- *
- *  var techs = require('direct-dev').techs;
- *
- *  nodeConfig.addTech(techs.devPageBemjson, {
- *      target: '?.bemjson.js',
- *      type: 'test',
- *      js: '?.js',
- *      devJs: '?.test.js',
- *      css: '?.css'
- *  });
- * ```
+ * [dev-page-bemjson](https://github.com/direct-adv-interfaces/direct-dev#dev-page-bemjson)
  */
 
-/**
- * @type {Tech}
- */
 module.exports = require('enb/lib/build-flow').create()
     .name('dev-page-bemjson')
     .target('target', '?.bemjson.js')
