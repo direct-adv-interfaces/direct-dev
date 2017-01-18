@@ -22,4 +22,4 @@ exports.deps = [
         "mod": "theme",
         "val": "islands"
     }
-]
+];

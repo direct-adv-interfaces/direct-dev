@@ -23,7 +23,7 @@ module.exports = function(config) {
         { rootPath: config.getRootPath() }
     );
 
-    config.nodes('*.bundles/*', function(nodeConfig) {
+    config.nodes('desktop.bundles/index', function(nodeConfig) {
 
         nodeConfig.addTechs([
 
@@ -62,6 +62,7 @@ module.exports = function(config) {
         ]);
 
         //nodeConfig.addTargets(['?.sandbox.html', '?.test.html', '?.js', '?.css', '?.sandbox.js', '?.test.js']);
-        nodeConfig.addTargets(['?.test-result.json']);
+        // nodeConfig.addTargets(['?.test-result.json']);
+        nodeConfig.addTargets(['?.bemdecl.js']);
     });
 };
