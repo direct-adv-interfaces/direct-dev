@@ -20,12 +20,14 @@ npm run enb
 #### Пример
 
 ```js
- var techs = require('direct-dev').techs;
+const techs = require('direct-dev').techs;
 
- nodeConfig.addTech(techs.devDeclaration, {
-     target: '?.bemdecl.js',
-     entities: ['block1', 'block1__elem2']
- });
+nodeConfig.addTech([
+    techs.devDeclaration, 
+    {
+        target: '?.bemdecl.js',
+        entities: ['block1', 'block1__elem2']
+    }]);
 ```
 
 ### dev-page-bemjson
@@ -47,16 +49,45 @@ npm run enb
 
 #### Пример
 
+```js
+const techs = require('direct-dev').techs;
+
+nodeConfig.addTech([
+    techs.devPageBemjson, 
+    {
+        target: '?.bemjson.js',
+        type: 'test',
+        js: '?.js',
+        devJs: '?.test.js',
+        css: '?.css'
+    }]);
+```
+
+### js-test
+
+Собирает бандл с кодом тестов. Включает туда содержимое файлов `.test.js`, соответствующих заданному фильтру. 
+
+#### Опции
+
+- `String` **[target]** — Результирующий таргет. По умолчанию `?.test.js`.
+- `BlockFilter` **[filter]** — Фильтр по названию блока и уровням переопределения. По умолчанию - не указан.
+
+#### Пример
 ```javascript
- var techs = require('direct-dev').techs;
- 
- nodeConfig.addTech(techs.devPageBemjson, {
-     target: '?.bemjson.js',
-     type: 'test',
-     js: '?.js',
-     devJs: '?.test.js',
-     css: '?.css'
- });
+const techs = require('direct-dev').techs;
+const BlockFilter = require('direct-dev/lib/block-filter');
+
+const filter = new BlockFilter(
+    { targetBlock: 'block-name', targetLevels: ['source.blocks'] },
+    { rootPath: config.getRootPath() }
+);
+
+nodeConfig.addTech([
+    techs.jsTest, 
+    { 
+        target: '?.test.js', 
+        filter: filter 
+    }]);
 ```
  
 ## Блоки

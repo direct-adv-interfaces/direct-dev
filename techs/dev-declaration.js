@@ -1,6 +1,6 @@
-/**
- * [dev-declaration](https://github.com/direct-adv-interfaces/direct-dev#dev-declaration)
- */
+'use strict';
+
+/** [dev-declaration](https://github.com/direct-adv-interfaces/direct-dev#dev-declaration) */
 
 const bemNaming = require('bem-naming');
 

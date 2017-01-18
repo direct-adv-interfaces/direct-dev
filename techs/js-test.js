@@ -1,5 +1,7 @@
 'use strict';
 
+/** [dev-declaration](https://github.com/direct-adv-interfaces/direct-dev#js-test) */
+
 const vow = require('vow');
 const vowFs = require('vow-fs');
 const BlockFilter = require('../lib/block-filter');

@@ -1,6 +1,6 @@
-/**
- * [dev-page-bemjson](https://github.com/direct-adv-interfaces/direct-dev#dev-page-bemjson)
- */
+'use strict';
+
+/** [dev-declaration](https://github.com/direct-adv-interfaces/direct-dev#dev-page-bemjson) */
 
 module.exports = require('enb/lib/build-flow').create()
     .name('dev-page-bemjson')
