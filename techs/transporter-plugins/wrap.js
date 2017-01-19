@@ -1,3 +1,5 @@
+'use strict';
+
 const through = require('through2');
 const path = require('path');
 const lodash = require('lodash');

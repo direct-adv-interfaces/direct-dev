@@ -1,3 +1,5 @@
+'use strict';
+
 const through = require('through2');
 const istanbul = require('istanbul');
 const PluginError = require('gulp-util').PluginError;

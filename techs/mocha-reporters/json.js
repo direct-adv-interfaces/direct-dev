@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * mocha JSON reporter
  * ===
