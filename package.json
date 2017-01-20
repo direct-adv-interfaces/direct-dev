@@ -1,60 +1,60 @@
 {
-    "name": "direct-dev",
-    "version": "0.1.11",
-    "description": "Yandex Direct dev tools",
-    "main": "lib/index.js",
-    "scripts": {
-        "enb": "enb make --no-cache --dir example-project",
-        "walker": "node lib/walker-cli.js -p test-report",
-        "compile": "babel lib --presets babel-preset-es2015 --out-dir es5lib && rm es5lib/walker-cli.js && rm -rf es5lib/tools",
-        "prepublish": "npm run compile"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/direct-adv-interfaces/direct-dev.git"
-    },
-    "keywords": [
-        "bem",
-        "tools",
-        "enb",
-        "tests",
-        "sandbox",
-        "block",
-        "bundle",
-        "dev",
-        "debug"
-    ],
-    "author": "dima117a",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/direct-adv-interfaces/direct-dev/issues"
-    },
-    "homepage": "https://github.com/direct-adv-interfaces/direct-dev#readme",
-    "dependencies": {
-        "bem-config": "^3.1.0",
-        "bem-naming": "^1.0.1",
-        "bem-walk": "^1.0.0-1",
-        "chalk": "^1.1.3",
-        "commander": "^2.9.0",
-        "enb": "^1.1.2",
-        "gulp-debug": "^3.0.0",
-        "gulp-if": "^2.0.2",
-        "gulp-util": "^3.0.7",
-        "istanbul": "^0.4.5",
-        "lodash": "^4.17.2",
-        "mocha-phantomjs-core": "^2.1.1",
-        "path-is-inside": "^1.0.2",
-        "phantomjs": "^2.1.7",
-        "vinyl": "^2.0.1",
-        "vow-fs": "^0.3.5"
-    },
-    "devDependencies": {
-        "babel-cli": "^6.22.2",
-        "babel-preset-es2015": "^6.22.0",
-        "enb-bem-techs": "^2.2.1",
-        "enb-bemxjst": "^8.0.0",
-        "enb-css": "^1.2.2",
-        "enb-js": "^1.1.0",
-        "enb-xjst": "^2.1.0"
-    }
+  "name": "direct-dev",
+  "version": "0.1.12",
+  "description": "Yandex Direct dev tools",
+  "main": "lib/index.js",
+  "scripts": {
+    "enb": "enb make --no-cache --dir example-project",
+    "walker": "node lib/walker-cli.js -p test-report",
+    "compile": "babel lib --presets babel-preset-es2015 --out-dir es5lib && rm es5lib/walker-cli.js && rm -rf es5lib/tools",
+    "prepublish": "npm run compile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/direct-adv-interfaces/direct-dev.git"
+  },
+  "keywords": [
+    "bem",
+    "tools",
+    "enb",
+    "tests",
+    "sandbox",
+    "block",
+    "bundle",
+    "dev",
+    "debug"
+  ],
+  "author": "dima117a",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/direct-adv-interfaces/direct-dev/issues"
+  },
+  "homepage": "https://github.com/direct-adv-interfaces/direct-dev#readme",
+  "dependencies": {
+    "bem-config": "^3.1.0",
+    "bem-naming": "^1.0.1",
+    "bem-walk": "^1.0.0-1",
+    "chalk": "^1.1.3",
+    "commander": "^2.9.0",
+    "enb": "^1.1.2",
+    "gulp-debug": "^3.0.0",
+    "gulp-if": "^2.0.2",
+    "gulp-util": "^3.0.7",
+    "istanbul": "^0.4.5",
+    "lodash": "^4.17.2",
+    "mocha-phantomjs-core": "^2.1.1",
+    "path-is-inside": "^1.0.2",
+    "phantomjs": "^2.1.7",
+    "vinyl": "^2.0.1",
+    "vow-fs": "^0.3.5"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-preset-es2015": "^6.22.0",
+    "enb-bem-techs": "^2.2.1",
+    "enb-bemxjst": "^8.0.0",
+    "enb-css": "^1.2.2",
+    "enb-js": "^1.1.0",
+    "enb-xjst": "^2.1.0"
+  }
 }
