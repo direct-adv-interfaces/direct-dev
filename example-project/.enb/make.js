@@ -62,7 +62,7 @@ module.exports = function(config) {
         ]);
 
         //nodeConfig.addTargets(['?.sandbox.html', '?.test.html', '?.js', '?.css', '?.sandbox.js', '?.test.js']);
-        // nodeConfig.addTargets(['?.test-result.json']);
-        nodeConfig.addTargets(['?.bemdecl.js']);
+        nodeConfig.addTargets(['?.test-result.json']);
+        //nodeConfig.addTargets(['?.bemdecl.js']);
     });
 };
