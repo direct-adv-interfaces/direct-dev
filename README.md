@@ -1,5 +1,5 @@
 Запустить сборку тестового проекта:
-```
+```sh
 npm run enb
 ```
 
@@ -20,10 +20,10 @@ npm run enb
 #### Пример
 
 ```js
-const techs = require('direct-dev').techs;
+const dev = require('direct-dev');
 
 nodeConfig.addTech([
-    techs.devDeclaration, 
+    dev.techs.devDeclaration, 
     {
         target: '?.bemdecl.js',
         entities: ['block1', 'block1__elem2']
@@ -50,10 +50,10 @@ nodeConfig.addTech([
 #### Пример
 
 ```js
-const techs = require('direct-dev').techs;
+const dev = require('direct-dev');
 
 nodeConfig.addTech([
-    techs.devPageBemjson, 
+    dev.techs.devPageBemjson, 
     {
         target: '?.bemjson.js',
         type: 'test',
@@ -73,7 +73,7 @@ nodeConfig.addTech([
 - `BlockFilter` **[filter]** — Фильтр по названию блока и уровням переопределения. По умолчанию - не указан.
 
 #### Пример
-```javascript
+```js
 const dev = require('direct-dev');
 
 const filter = new dev.BlockFilter(
@@ -85,6 +85,33 @@ nodeConfig.addTech([
     dev.techs.jsTest, 
     { 
         target: '?.test.js', 
+        filter: filter 
+    }]);
+```
+
+### sandbox
+ 
+Собирает бандл для песочницы. Включает туда содержимое файлов .sandbox.js, обернутое в служебный код песочницы.
+
+#### Опции
+
+- `String` **[target]** — Результирующий таргет. По умолчанию `?.sandbox.js`.
+- `BlockFilter` **[filter]** — Фильтр по названию блока и уровням переопределения. По умолчанию - не указан.
+
+#### Пример
+
+```js
+const dev = require('direct-dev');
+
+const filter = new dev.BlockFilter(
+    { targetBlock: 'block-name', targetLevels: ['source.blocks'] },
+    { rootPath: config.getRootPath() }
+);
+
+nodeConfig.addTech([
+    dev.techs.sandbox, 
+    { 
+        target: '?.sandbox.js', 
         filter: filter 
     }]);
 ```
