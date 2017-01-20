@@ -1,7 +1,8 @@
 const levels = ['../blocks', 'common.blocks', 'desktop.blocks'];
 const transporterPlugins = require('../../lib/index').transporterPlugins;
+const directDev = require('../../lib/index');
 const techs = {
-    dev: require('../../lib/index').techs,
+    dev: directDev.techs,
     bem: require('enb-bem-techs'),
     enb: {
         provideFile: require('enb/techs/file-provider'),
@@ -14,11 +15,9 @@ const techs = {
     }
 };
 
-const BlockFilter = require('../../lib/block-filter');
-
 module.exports = function(config) {
 
-    const filter = new BlockFilter(
+    const filter = new directDev.BlockFilter(
         { targetBlock: 'b1', targetLevels: ['desktop.blocks'] },
         { rootPath: config.getRootPath() }
     );

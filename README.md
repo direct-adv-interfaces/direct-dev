@@ -74,16 +74,15 @@ nodeConfig.addTech([
 
 #### Пример
 ```javascript
-const techs = require('direct-dev').techs;
-const BlockFilter = require('direct-dev/lib/block-filter');
+const dev = require('direct-dev');
 
-const filter = new BlockFilter(
+const filter = new dev.BlockFilter(
     { targetBlock: 'block-name', targetLevels: ['source.blocks'] },
     { rootPath: config.getRootPath() }
 );
 
 nodeConfig.addTech([
-    techs.jsTest, 
+    dev.techs.jsTest, 
     { 
         target: '?.test.js', 
         filter: filter 
