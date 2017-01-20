@@ -6,7 +6,8 @@
     "scripts": {
         "enb": "enb make --no-cache --dir example-project",
         "walker": "node lib/walker-cli.js -p test-report",
-        "build": "babel techs --presets babel-preset-es2015 --out-dir es5techs"
+        "compile": "babel lib --presets babel-preset-es2015 --out-dir es5lib && rm es5lib/walker-cli.js && rm -rf es5lib/tools",
+        "prepublish": "npm run compile"
     },
     "repository": {
         "type": "git",
