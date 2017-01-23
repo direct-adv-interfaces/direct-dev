@@ -41,3 +41,4 @@ example-project/.enb/tmp
 example-project/desktop.bundles
 lcov.info
 lcov-report
+es5lib

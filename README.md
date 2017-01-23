@@ -73,6 +73,7 @@ nodeConfig.addTech([
 - `BlockFilter` **[filter]** — Фильтр по названию блока и уровням переопределения. По умолчанию - не указан.
 
 #### Пример
+
 ```js
 const dev = require('direct-dev');
 
@@ -115,7 +116,29 @@ nodeConfig.addTech([
         filter: filter 
     }]);
 ```
- 
+
+### phantom-testing
+
+Технология принимает на вход html-файл с тестами и передает его программе mocha-phantomjs. Результат в формате JSON записываеся в файл.
+
+#### Опции
+
+- `String` **[target]** — Результирующий таргет. По умолчанию `?.test-result.json`.
+- `String` **[html]** — Таргет страницы с тестами, которая будет передана в phantomjs. По умолчанию `?.html`. Указанный таргет будет собран автоматически перед запуском тестов.
+
+#### Пример
+
+```js
+const dev = require('direct-dev');
+
+nodeConfig.addTech([
+    dev.techs.phantomTesting,
+    {
+        target: '?.test-result.json',
+        html: '?.html'
+    }]);
+```
+
 ## Блоки
 
 ...
