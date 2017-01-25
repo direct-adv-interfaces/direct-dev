@@ -139,6 +139,62 @@ nodeConfig.addTech([
     }]);
 ```
 
+### transporter
+
+Технология склеивает исходные файлы в один, предварительно выполняя обработку каждого отдельного файла цепочкой обработчиков. 
+
+#### Опции
+
+- `String` **[target]** — Результирующий таргет. По умолчанию `?.merged.js`.
+- `Object|Array` **[apply]** — Обработчик или массив обработчиков, которые будут применяться к каждому файлу.
+
+#### Обработчики
+
+В качестве обработчиков используются плагины для [gulp](http://gulpjs.com). Также в пакете доступны два дополнительных плагина:
+
+- **coverage** - инструментирует js файлы с помощью библиотеки [istanbul](https://github.com/gotwarlost/istanbul);
+- **wrap** - добавляет заданные строки в начало и конец обрабатываемого файла. Доступны плейсхолдеры `${relative}` (относительный путь к текущему файлу) и `${path}` (абсолютный путь).
+
+#### Пример
+
+Генерация js кода с данными из json файла:
+
+```js
+const dev = require('direct-dev');
+
+nodeConfig.addTech([
+    dev.techs.transporter('json'),              // ищем все файлы .json
+    {
+        target: '?.json.js',                    // собираем бандл ?.json.js
+        apply: dev.transporterPlugins.wrap({ 
+            before: 'GLOBAL_DATA.push(',        // добавляем в начало
+            after: ');'                         // добавляем в конец
+        })
+    }]);
+```
+
+Инструментирование выбранных файлов:
+
+```js
+const dev = require('direct-dev');
+const gulpIf = require('gulp-if');
+
+const condition = true; // TODO: add business logic
+
+nodeConfig.addTech([
+    dev.techs.transporter('js'),
+    {
+        target: '?.js',
+        apply: [
+            gulpIf(condition, dev.transporterPlugins.coverage()), // инструментируем только нужные файлы
+            dev.transporterPlugins.wrap({                         // добавляем комментарии в начало и конец
+                before: '/* begin: ${relative} */', 
+                after: '/* end: ${relative} */' }) 
+        ]
+    }]);
+```
+
+
 ## Блоки
 
 ...
