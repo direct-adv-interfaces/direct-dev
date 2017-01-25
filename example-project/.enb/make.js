@@ -1,6 +1,6 @@
 const levels = ['../blocks', 'common.blocks', 'desktop.blocks'];
-const transporterPlugins = require('../../lib/index').transporterPlugins;
-const directDev = require('../../lib/index');
+const directDev = require('../../es5lib/index');
+const transporterPlugins = directDev.transporterPlugins;
 const techs = {
     dev: directDev.techs,
     bem: require('enb-bem-techs'),
