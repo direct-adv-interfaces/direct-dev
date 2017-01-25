@@ -1,5 +1,5 @@
 const levels = ['../blocks', 'common.blocks', 'desktop.blocks'];
-const directDev = require('../../es5lib/index');
+const directDev = require('../../lib/index');
 const transporterPlugins = directDev.transporterPlugins;
 const techs = {
     dev: directDev.techs,
