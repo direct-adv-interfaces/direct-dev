@@ -157,22 +157,6 @@ nodeConfig.addTech([
 
 #### Пример
 
-Генерация js кода с данными из json файла:
-
-```js
-const dev = require('direct-dev');
-
-nodeConfig.addTech([
-    dev.techs.transporter('json'),              // ищем все файлы .json
-    {
-        target: '?.json.js',                    // собираем бандл ?.json.js
-        apply: dev.transporterPlugins.wrap({ 
-            before: 'GLOBAL_DATA.push(',        // добавляем в начало
-            after: ');'                         // добавляем в конец
-        })
-    }]);
-```
-
 Инструментирование выбранных файлов:
 
 ```js
