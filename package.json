@@ -38,7 +38,6 @@
     "chalk": "1.1.3",
     "commander": "2.9.0",
     "enb": "1.1.2",
-    "gulp-if": "2.0.2",
     "gulp-util": "3.0.7",
     "istanbul": "0.4.5",
     "lodash": "4.17.2",

@@ -47,10 +47,7 @@ module.exports = function(config) {
             [techs.dev.transporter('js'), {
                 target: '?.js',
                 apply: [
-                    // transporterPlugins.debug(),
-                    transporterPlugins.gulpIf(
-                        filter.vinyl, // фильтр блоков
-                        transporterPlugins.coverage()), // считаем coverage
+                    transporterPlugins.coverage({ filter: filter.vinyl }),
                     transporterPlugins.wrap({ before: '\n// # outer-begin\n', after: '\n// # outer-end\n' })
                 ]
             }],

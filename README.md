@@ -177,17 +177,16 @@ nodeConfig.addTech([
 
 ```js
 const dev = require('direct-dev');
-const gulpIf = require('gulp-if');
 
-const condition = true; // TODO: add business logic
+const filter = vinyl => true;   // TODO: add business logic
 
 nodeConfig.addTech([
     dev.techs.transporter('js'),
     {
         target: '?.js',
         apply: [
-            gulpIf(condition, dev.transporterPlugins.coverage()), // инструментируем только нужные файлы
-            dev.transporterPlugins.wrap({                         // добавляем комментарии в начало и конец
+            dev.transporterPlugins.coverage({ filter }),  // инструментируем только нужные файлы
+            dev.transporterPlugins.wrap({                 // добавляем комментарии в начало и конец
                 before: '/* begin: ${relative} */', 
                 after: '/* end: ${relative} */' }) 
         ]
