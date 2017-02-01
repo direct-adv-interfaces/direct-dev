@@ -2,8 +2,12 @@
 if (typeof window.initMochaPhantomJS === 'function') {
     window.initMochaPhantomJS();
 }
+
+window.mochaOptions = { timeout: 10000 };
+!window.callPhantom && (+localStorage.getItem('allowUncaught') === 1) && (window.mochaOptions.allowUncaught = 1);
+
 mocha.ui('bdd');
-mocha.setup({ timeout: 10000 });
+mocha.setup(window.mochaOptions);
 
 window.expect || (window.expect = chai.expect);
 
