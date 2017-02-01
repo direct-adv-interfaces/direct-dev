@@ -18,7 +18,8 @@ module.exports = {
         'test-report': {
             handler: './walker-plugins/test-reporter',
             handlerConfig: {
-                reporter: 'console'
+                reporter: 'console',
+                displayEmpty: true
             },
             levels: ['example-project/desktop.bundles']
         },
