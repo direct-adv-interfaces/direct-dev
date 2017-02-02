@@ -13,17 +13,6 @@
     },
     {
         "target": "?.test-result.json",
-        "block": "dev-sandbox",
-        "path": "example-project/desktop.bundles/dev-sandbox",
-        "entities": [
-            "dev-page",
-            "dev-page_type_test",
-            "dev-sandbox"
-        ],
-        "hasTests": false
-    },
-    {
-        "target": "?.test-result.json",
         "block": "b2",
         "path": "example-project/desktop.bundles/b2",
         "entities": [
@@ -32,6 +21,17 @@
             "b2"
         ],
         "hasTests": true
+    },
+    {
+        "target": "?.test-result.json",
+        "block": "dev-sandbox",
+        "path": "example-project/desktop.bundles/dev-sandbox",
+        "entities": [
+            "dev-page",
+            "dev-page_type_test",
+            "dev-sandbox"
+        ],
+        "hasTests": false
     },
     {
         "target": "?.test-result.json",
