@@ -1,12 +1,20 @@
 Запустить сборку тестового проекта:
+
 ```sh
 npm run enb
 ```
 
 При обходе блоков порядок не гарантируется!
 
-
 ## Технологии
+
+- [dev-declaration](#dev-declaration) - генерирует `bemdecl.js` для заданного набора сущностей;
+- [dev-page-bemjson](#dev-page-bemjson) - генерирует `bemjson` для отладочной страницы;                                                         
+- [js-test](#js-test) - сборка бандлов с тестами;
+- [sandbox](#sandbox) - сборка бандлов с кодом "песочницы";
+- [phantom-testing](#phantom-testing) - выполнение тестов в phantomjs;
+- [empty-test-result](#empty-test-result) - генерация пустого результата выполнения тестов без их запуска;
+- [transporter](#transporter) - трансформация отдельных файлов цепочкой обработчиков.                                                                              
 
 ### dev-declaration
 
@@ -120,6 +128,7 @@ nodeConfig.addTech([
 ### phantom-testing
 
 Технология принимает на вход html-файл с тестами и передает его программе mocha-phantomjs. Результат в формате JSON записываеся в файл.
+Если код предварительно был инструментировн, в результирующий файл будет также записана информация о покрытии кода тестами.
 
 #### Опции
 
@@ -136,6 +145,41 @@ nodeConfig.addTech([
     {
         target: '?.test-result.json',
         html: '?.html'
+    }]);
+```
+
+### empty-test-result
+
+Технология формирует пустой файл с результатами тестов в формате технологии [phantom-testing](#phantom-testing). При создании можно передать параметр `needCoverage` - если передать значение `true`, в результирующий файл будет добавлен zero-coverage report (считаем, что весь код не покрыт тестами). 
+
+Данная технология нужна для получения отчета о результатах тестов без их запуска, если заранее известно, что в бандле нет тестов.
+
+#### Опции
+
+- `String` **[target]** — Результирующий таргет. По умолчанию `?.test-result.json`.
+- `BlockFilter` **[filter]** — Фильтр по названию блока и уровням переопределения. По умолчанию - не указан.
+
+#### Пример
+
+```js
+const dev = require('direct-dev');
+
+// указываем, что нужно добавить в результат информацию 
+// о нулевом покрытии кода тестами
+const needCoverage = true;               
+
+// при формировании информации о покрытии будем учитывать только 
+// код конкретного блока и только на заданных уровнях
+const filter = new dev.BlockFilter(
+    { targetBlock: 'block-name', targetLevels: ['source.blocks'] },
+    { rootPath: config.getRootPath() }
+);
+
+nodeConfig.addTech([
+    dev.techs.emptyTestResult(needCoverage),
+    {
+        target: '?.test-result.json',
+        filter: filter
     }]);
 ```
 
