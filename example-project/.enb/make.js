@@ -27,7 +27,8 @@ module.exports = function(config) {
         nodeConfig.addTechs([
 
             // bundle endpoint
-            [techs.dev.devDeclaration, { entities: ['dev-page', 'dev-page_type_test', 'b1', 'b2', 'input__el1', 'select_theme_islands'] }],
+           // [techs.dev.devDeclaration, { entities: ['dev-page', 'dev-page_type_test', 'b1', 'b2', 'input__el1', 'select_theme_islands'] }],
+            [techs.dev.devDeclaration, { entities: ['b1', 'b2', 'input__el1', 'select_theme_islands'] }],
             [techs.dev.devPageBemjson, { type: 'test', js: '?.js', devJs: '?.test.js', css: '?.css' }],
             //[techs.enb.provideFile, { target: '?.bemdecl.js' }],
 
@@ -48,7 +49,8 @@ module.exports = function(config) {
                 target: '?.js',
                 apply: [
                     transporterPlugins.coverage({ filter: filter.vinyl }),
-                    transporterPlugins.wrap({ before: '\n// # outer-begin\n', after: '\n// # outer-end\n' })
+                    transporterPlugins.wrap(
+                        { before: '\n// # outer-begin ${relative}\n', after: '\n// # outer-end ${relative}\n' })
                 ]
             }],
             [techs.enb.css],
@@ -58,7 +60,7 @@ module.exports = function(config) {
         ]);
 
         //nodeConfig.addTargets(['?.sandbox.html', '?.test.html', '?.js', '?.css', '?.sandbox.js', '?.test.js']);
-        nodeConfig.addTargets(['?.test-result.json']);
-        //nodeConfig.addTargets(['?.bemdecl.js']);
+        //nodeConfig.addTargets(['?.test-result.json']);
+        nodeConfig.addTargets(['?.js']);
     });
 };

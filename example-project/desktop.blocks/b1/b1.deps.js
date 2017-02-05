@@ -1,3 +1,8 @@
 ([{
-    shouldDeps: [{ elem: 'e1' }]
+    shouldDeps: [
+        { elem: 'e1' }
+    ],
+    mustDeps: [
+        { block: 'b3' }
+    ]
 }]);
