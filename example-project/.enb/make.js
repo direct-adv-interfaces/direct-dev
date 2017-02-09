@@ -45,7 +45,7 @@ module.exports = function(config) {
 
             [techs.xjst.bemhtml],
             //[techs.enb.browserJs, { target: '?.js' }],
-            [techs.dev.transporter('js'), {
+            [techs.dev.transporter('js', { noCache: true }), {
                 target: '?.js',
                 apply: [
                     transporterPlugins.coverage({ filter: filter.vinyl }),

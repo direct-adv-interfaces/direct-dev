@@ -210,7 +210,7 @@ const dev = require('direct-dev');
 const filter = vinyl => true;   // TODO: add business logic
 
 nodeConfig.addTech([
-    dev.techs.transporter('js'),
+    dev.techs.transporter('js', { noCache: true }),
     {
         target: '?.js',
         apply: [
