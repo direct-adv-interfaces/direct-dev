@@ -1,13 +1,12 @@
 [
     {
         "target": "?.test-result.json",
-        "block": "b1",
-        "path": "example-project/desktop.bundles/b1",
+        "block": "b2",
+        "path": "example-project/desktop.bundles/b2",
         "entities": [
             "dev-page",
             "dev-page_type_test",
-            "b1",
-            "b1__e1"
+            "b2"
         ],
         "hasTests": true
     },
@@ -24,24 +23,13 @@
     },
     {
         "target": "?.test-result.json",
-        "block": "b2",
-        "path": "example-project/desktop.bundles/b2",
-        "entities": [
-            "dev-page",
-            "dev-page_type_test",
-            "b2"
-        ],
-        "hasTests": true
-    },
-    {
-        "target": "?.test-result.json",
         "block": "b3",
         "path": "example-project/desktop.bundles/b3",
         "entities": [
             "dev-page",
             "dev-page_type_test",
-            "b3__el4"
+            "b3"
         ],
-        "hasTests": true
+        "hasTests": false
     }
 ]

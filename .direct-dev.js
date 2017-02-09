@@ -3,6 +3,7 @@ module.exports = {
         'example-project/common.blocks',
         'example-project/desktop.blocks'
     ],
+    exclude: ['b1', 'b3__el4'],
     profiles: {
         'test-bundles': {
             handler: './walker-plugins/test-bundler',
