@@ -213,6 +213,7 @@ nodeConfig.addTech([
         sourceSuffixes: ['utils.js', 'model.js', 'js'],
         apply: [
             dev.transporterPlugins.coverage({ filter }),  // инструментируем только нужные файлы
+            dev.transporterPlugins.babel({ filter }),  //применяем babel
             dev.transporterPlugins.wrap({                 // добавляем комментарии в начало и конец
                 before: '/* begin: ${relative} */', 
                 after: '/* end: ${relative} */' }) 
