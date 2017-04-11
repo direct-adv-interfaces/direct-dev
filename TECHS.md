@@ -105,7 +105,7 @@ nodeConfig.addTech([
 const dev = require('direct-dev');
 
 const filter = new dev.BlockFilter(
-    { targetBlock: 'block-name', targetLevels: ['source.blocks'] },
+    { targetBlock: 'block-name', targetLevels: ['source.blocks'], sourceSuffixes: ['js', 'jsx'] },
     { rootPath: config.getRootPath() }
 );
 
@@ -196,6 +196,7 @@ nodeConfig.addTech([
 
 - **coverage** - инструментирует js файлы с помощью библиотеки [istanbul](https://github.com/gotwarlost/istanbul);
 - **wrap** - добавляет заданные строки в начало и конец обрабатываемого файла. Доступны плейсхолдеры `${relative}` (относительный путь к текущему файлу) и `${path}` (абсолютный путь).
+- **babel** - обрабатывает выбранный файл babel-ем
 
 ### Пример
 
@@ -213,10 +214,39 @@ nodeConfig.addTech([
         sourceSuffixes: ['utils.js', 'model.js', 'js'],
         apply: [
             dev.transporterPlugins.coverage({ filter }),  // инструментируем только нужные файлы
-            dev.transporterPlugins.babel({ filter }),  //применяем babel
             dev.transporterPlugins.wrap({                 // добавляем комментарии в начало и конец
                 before: '/* begin: ${relative} */', 
                 after: '/* end: ${relative} */' }) 
         ]
     }]);
 ```
+
+### Пример
+
+Обработка выбранных файлов babel'ем:
+
+```js
+const dev = require('direct-dev');
+
+const filter = file => true;   // TODO: add business logic
+
+nodeConfig.addTech([
+    dev.techs.transporter('js', { noCache: true }),
+    {
+        target: '?.js',
+        sourceSuffixes: ['utils.js', 'model.js', 'js', 'jsx'],
+        apply: [
+            dev.transporterPlugins.babel({ 
+                filter,  // применем babel только к нужным файлам
+                babelOptions: {
+                    //Можем использовать любые плагины для babel. Для этого их надо установить на уровне проекта
+                    plugins: [require('babel-preset-react').plugins] 
+                }
+            }),  
+            dev.transporterPlugins.wrap({                 // добавляем комментарии в начало и конец
+                before: '/* begin: ${relative} */', 
+                after: '/* end: ${relative} */' }) 
+        ]
+    }]);
+```
+
