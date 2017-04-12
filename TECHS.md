@@ -78,7 +78,7 @@ nodeConfig.addTech([
 const dev = require('direct-dev');
 
 const filter = new dev.BlockFilter(
-    { targetBlock: 'block-name', targetLevels: ['source.blocks'] },
+    { targetBlock: 'block-name', targetLevels: ['source.blocks'], techs: ['js', 'jsx'] },
     { rootPath: config.getRootPath() }
 );
 
@@ -105,7 +105,7 @@ nodeConfig.addTech([
 const dev = require('direct-dev');
 
 const filter = new dev.BlockFilter(
-    { targetBlock: 'block-name', targetLevels: ['source.blocks'], sourceSuffixes: ['js', 'jsx'] },
+    { targetBlock: 'block-name', targetLevels: ['source.blocks'], techs: ['js', 'jsx'] },
     { rootPath: config.getRootPath() }
 );
 
