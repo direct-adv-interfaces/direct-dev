@@ -1,7 +1,6 @@
 block('dev-page')(
 
     elem('head').tag()('head'),
-    elem('body').tag()('body'),
     elem('title').tag()('title'),
     elem('meta').tag()('meta'),
     elem('script').def()(function() {
@@ -40,5 +39,19 @@ block('dev-page')(
             },
             { elem: 'body', refs: refs }
         ];
-    })
+    }),
+
+    elem('body')(
+        
+        tag()('body'),
+
+        content()(function() {
+            const refs = this.ctx.refs;
+
+            return [
+                refs.js && { elem: 'js', url: refs.js },
+                refs.devJs && { elem: 'js', url: refs.devJs }
+            ];
+        })
+    )
 );
