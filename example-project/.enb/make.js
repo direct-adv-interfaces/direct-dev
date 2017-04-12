@@ -27,8 +27,8 @@ module.exports = function(config) {
         nodeConfig.addTechs([
 
             // bundle endpoint
-            [techs.dev.devDeclaration, { entities: ['dev-page', 'dev-page_type_test', 'b1', 'b2', 'input__el1', 'select_theme_islands'] }],
-            //[techs.dev.devDeclaration, { entities: ['b1', 'b2', 'input__el1', 'select_theme_islands'] }],
+            //[techs.dev.devDeclaration, { entities: ['dev-page', 'dev-page_type_test', 'b1', 'b2', 'input__el1', 'select_theme_islands'] }],
+            [techs.dev.devDeclaration, { entities: ['dev-page', 'b1', 'b2', 'input__el1', 'select_theme_islands'] }],
             [techs.dev.devPageBemjson, { type: 'test', js: '?.js', devJs: '?.test.js', css: '?.css' }],
             //[techs.enb.provideFile, { target: '?.bemdecl.js' }],
 
@@ -45,7 +45,7 @@ module.exports = function(config) {
 
             [techs.xjst.bemhtml],
             //[techs.enb.browserJs, { target: '?.js' }],
-            [techs.dev.transporter('js', { noCache: true }), {
+            [techs.dev.transporter('js', { noCache: true, useSourceMap: true }), {
                 target: '?.js',
                 apply: [
                     transporterPlugins.coverage({ filter: filter.vinyl }),

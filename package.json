@@ -49,6 +49,7 @@
     "path-is-inside": "1.0.2",
     "phantomjs": "2.1.7",
     "readable-stream": "2.2.2",
+    "source-map": "0.5.6",
     "stream-array": "1.1.2",
     "through2": "2.0.3",
     "vinyl": "2.0.1",
