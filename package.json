@@ -34,6 +34,7 @@
   },
   "homepage": "https://github.com/direct-adv-interfaces/direct-dev#readme",
   "dependencies": {
+    "babel-core": "6.24.1",
     "bem-config": "3.1.0",
     "bem-naming": "1.0.1",
     "bem-walk": "1.0.0-1",
