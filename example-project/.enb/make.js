@@ -48,9 +48,9 @@ module.exports = function(config) {
             [techs.dev.transporter('js', { noCache: true, useSourceMap: true }), {
                 target: '?.js',
                 apply: [
-                    transporterPlugins.coverage({ filter: filter.vinyl }),
-                    transporterPlugins.wrap(
-                        { before: '\n// # outer-begin ${relative}\n', after: '\n// # outer-end ${relative}\n' })
+                    //transporterPlugins.coverage({ filter: filter.vinyl }),
+                    // transporterPlugins.wrap(
+                    //     { before: '\n// # outer-begin ${relative}\n', after: '\n// # outer-end ${relative}\n' })
                 ]
             }],
             [techs.enb.css],
