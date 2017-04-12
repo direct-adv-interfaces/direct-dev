@@ -50,6 +50,7 @@
     "phantomjs": "2.1.7",
     "readable-stream": "2.2.2",
     "source-map": "0.5.6",
+    "source-map-dummy": "1.0.0",
     "stream-array": "1.1.2",
     "through2": "2.0.3",
     "vinyl": "2.0.1",
