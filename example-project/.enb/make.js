@@ -49,8 +49,11 @@ module.exports = function(config) {
                 target: '?.js',
                 apply: [
                     //transporterPlugins.coverage({ filter: filter.vinyl }),
-                    // transporterPlugins.wrap(
-                    //     { before: '\n// # outer-begin ${relative}\n', after: '\n// # outer-end ${relative}\n' })
+                    transporterPlugins.wrap(
+                        {
+                            before: '\n //test \n //test \n //test \n //test\n //test\n //test\n //test // # outer-begin ${relative}\n',
+                            after: '\n//test \n//test \n//test \n//test \n//test \n//test \n//test \n//test \n//test \n//test \n//test \n//test \n//test \n//test \n//test \n//test \n//test # outer-end ${relative}\n'
+                        })
                 ]
             }],
             [techs.dev.transporter('css', { noCache: true, sourceMap: 'css' }), {
