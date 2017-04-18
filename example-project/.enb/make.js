@@ -45,7 +45,7 @@ module.exports = function(config) {
 
             [techs.xjst.bemhtml],
             //[techs.enb.browserJs, { target: '?.js' }],
-            [techs.dev.transporter('js', { noCache: true, useSourceMap: true }), {
+            [techs.dev.transporter('js', { noCache: true, sourceMap: 'js' }), {
                 target: '?.js',
                 apply: [
                     //transporterPlugins.coverage({ filter: filter.vinyl }),
@@ -53,7 +53,10 @@ module.exports = function(config) {
                     //     { before: '\n// # outer-begin ${relative}\n', after: '\n// # outer-end ${relative}\n' })
                 ]
             }],
-            [techs.enb.css],
+            [techs.dev.transporter('css', { noCache: true, sourceMap: 'css' }), {
+                target: '?.css',
+                apply: []
+            }],
 
             [techs.xjst.bemjsonToHtml, { target: '?.sandbox.html',  bemjsonFile: '?.sandbox.bemjson.js' }],
             [techs.xjst.bemjsonToHtml, { target: '?.html',  bemjsonFile: '?.bemjson.js' }]
