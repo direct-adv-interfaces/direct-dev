@@ -43,7 +43,7 @@
     "commander": "2.9.0",
     "enb": "1.1.2",
     "gulp-util": "3.0.7",
-    "istanbul": "0.4.5",
+    "istanbul-lib-instrument": "1.7.0",
     "lodash": "4.17.2",
     "mocha-phantomjs-core": "2.1.1",
     "path-is-inside": "1.0.2",
