@@ -1,48 +1,12 @@
 [
     {
-        "target": "?.test-result.json",
+        "target": "?.gemini-result.json",
         "block": "b1",
-        "path": "example-project/desktop.bundles/b1",
-        "entities": [
-            "dev-page",
-            "dev-page_type_test",
-            "b1",
-            "b1__e1"
-        ],
-        "hasTests": true
+        "path": "example-project/common.blocks/b1/b1.gemini/test1.js"
     },
     {
-        "target": "?.test-result.json",
-        "block": "b2",
-        "path": "example-project/desktop.bundles/b2",
-        "entities": [
-            "dev-page",
-            "dev-page_type_test",
-            "b2"
-        ],
-        "hasTests": true
-    },
-    {
-        "target": "?.test-result.json",
-        "block": "dev-sandbox",
-        "path": "example-project/desktop.bundles/dev-sandbox",
-        "entities": [
-            "dev-page",
-            "dev-page_type_test",
-            "dev-sandbox"
-        ],
-        "hasTests": false
-    },
-    {
-        "target": "?.test-result.json",
-        "block": "b3",
-        "path": "example-project/desktop.bundles/b3",
-        "entities": [
-            "dev-page",
-            "dev-page_type_test",
-            "b3",
-            "b3__el4"
-        ],
-        "hasTests": true
+        "target": "?.gemini-result.json",
+        "block": "b1",
+        "path": "example-project/common.blocks/b1/b1.gemini/test2.js"
     }
 ]

@@ -16,6 +16,17 @@ module.exports = {
                 }
             }
         },
+        'gemini-bundles': {
+            handler: './walker-plugins/gemini-bundler',
+            handlerConfig: {
+                resultPath: 'example-project/bundles.json',
+                baseBundlePath: 'example-project/desktop.bundles',
+                devEntities: ['dev-page', 'dev-page_type_test'],
+                defaultBundleConfig: {
+                    target: '?.gemini-result.json'
+                }
+            }
+        },
         'test-report': {
             handler: './walker-plugins/test-reporter',
             handlerConfig: {
