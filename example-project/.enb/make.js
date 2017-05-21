@@ -15,6 +15,50 @@ const techs = {
     }
 };
 
+function configureBundles(nodeConfig, bundle) {
+
+    console.log(bundle);
+
+    nodeConfig.addTechs([
+
+        // bundle endpoint
+        [techs.dev.devDeclaration, { entities: ['dev-page', 'dev-page_type_test', 'b1', 'b2', 'input__el1', 'select_theme_islands'] }],
+        //[techs.dev.devDeclaration, { entities: ['b1', 'b2', 'input__el1', 'select_theme_islands'] }],
+        [techs.dev.devPageBemjson, { type: 'test', js: '?.js', devJs: '?.test.js', css: '?.css' }],
+        //[techs.enb.provideFile, { target: '?.bemdecl.js' }],
+
+        // essential
+        [techs.bem.levels, { levels: levels }],
+        [techs.bem.depsOld],
+        [techs.bem.files],
+
+        // dev bundles
+        [techs.dev.sandbox],
+        [techs.dev.jsTest, { filter: filter }],
+        [techs.dev.phantomTesting],
+        //[techs.dev.emptyTestResult(true), { filter: filter }],
+
+        [techs.xjst.bemhtml],
+        //[techs.enb.browserJs, { target: '?.js' }],
+        [techs.dev.transporter('js', { noCache: true }), {
+            target: '?.js',
+            apply: [
+                transporterPlugins.coverage({ filter: filter.vinyl }),
+                transporterPlugins.wrap(
+                    { before: '\n// # outer-begin ${relative}\n', after: '\n// # outer-end ${relative}\n' })
+            ]
+        }],
+        [techs.enb.css],
+
+        [techs.xjst.bemjsonToHtml, { target: '?.sandbox.html',  bemjsonFile: '?.sandbox.bemjson.js' }],
+        [techs.xjst.bemjsonToHtml, { target: '?.html',  bemjsonFile: '?.bemjson.js' }]
+    ]);
+
+    //nodeConfig.addTargets(['?.sandbox.html', '?.test.html', '?.js', '?.css', '?.sandbox.js', '?.test.js']);
+    nodeConfig.addTargets(['?.gemini-result.json']);
+    //nodeConfig.addTargets(['?.js']);
+}
+
 module.exports = function(config) {
 
     const filter = new directDev.BlockFilter(
@@ -22,45 +66,11 @@ module.exports = function(config) {
         { rootPath: config.getRootPath() }
     );
 
-    config.nodes('desktop.bundles/index', function(nodeConfig) {
+    var bundlesConfig = require('../bundles.json');
 
-        nodeConfig.addTechs([
+    config.setLanguages(['ru']);
 
-            // bundle endpoint
-            [techs.dev.devDeclaration, { entities: ['dev-page', 'dev-page_type_test', 'b1', 'b2', 'input__el1', 'select_theme_islands'] }],
-            //[techs.dev.devDeclaration, { entities: ['b1', 'b2', 'input__el1', 'select_theme_islands'] }],
-            [techs.dev.devPageBemjson, { type: 'test', js: '?.js', devJs: '?.test.js', css: '?.css' }],
-            //[techs.enb.provideFile, { target: '?.bemdecl.js' }],
-
-            // essential
-            [techs.bem.levels, { levels: levels }],
-            [techs.bem.depsOld],
-            [techs.bem.files],
-
-            // dev bundles
-            [techs.dev.sandbox],
-            [techs.dev.jsTest, { filter: filter }],
-            [techs.dev.phantomTesting],
-            //[techs.dev.emptyTestResult(true), { filter: filter }],
-
-            [techs.xjst.bemhtml],
-            //[techs.enb.browserJs, { target: '?.js' }],
-            [techs.dev.transporter('js', { noCache: true }), {
-                target: '?.js',
-                apply: [
-                    transporterPlugins.coverage({ filter: filter.vinyl }),
-                    transporterPlugins.wrap(
-                        { before: '\n// # outer-begin ${relative}\n', after: '\n// # outer-end ${relative}\n' })
-                ]
-            }],
-            [techs.enb.css],
-
-            [techs.xjst.bemjsonToHtml, { target: '?.sandbox.html',  bemjsonFile: '?.sandbox.bemjson.js' }],
-            [techs.xjst.bemjsonToHtml, { target: '?.html',  bemjsonFile: '?.bemjson.js' }]
-        ]);
-
-        //nodeConfig.addTargets(['?.sandbox.html', '?.test.html', '?.js', '?.css', '?.sandbox.js', '?.test.js']);
-        nodeConfig.addTargets(['?.test-result.json']);
-        //nodeConfig.addTargets(['?.js']);
+    bundlesConfig.forEach(function(bundle) {
+        config.nodes(bundle.path, function(nodeConfig) { configureBundles(nodeConfig, bundle) });
     });
 };
