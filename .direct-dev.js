@@ -23,7 +23,6 @@ module.exports = {
                 baseBundlePath: 'example-project/desktop.bundles',
                 devEntities: ['dev-page', 'dev-page_type_test'],
                 defaultBundleConfig: {
-                    target: '?.gemini-result.json'
                 }
             }
         },

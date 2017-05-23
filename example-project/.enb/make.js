@@ -59,6 +59,10 @@ function configureBundles(nodeConfig, bundle) {
     //nodeConfig.addTargets(['?.js']);
 }
 
+function configureGeminiBundle(nodeConfig, bundle) {
+    console.log(bundle);
+}
+
 module.exports = function(config) {
 
     const filter = new directDev.BlockFilter(
@@ -68,9 +72,11 @@ module.exports = function(config) {
 
     var bundlesConfig = require('../bundles.json');
 
-    config.setLanguages(['ru']);
+    // bundlesConfig.forEach(function(bundle) {
+    //     config.nodes(bundle.path, function(nodeConfig) { configureBundles(nodeConfig, bundle) });
+    // });
 
     bundlesConfig.forEach(function(bundle) {
-        config.nodes(bundle.path, function(nodeConfig) { configureBundles(nodeConfig, bundle) });
+        config.nodes(bundle.path, function(nodeConfig) { configureGeminiBundle(nodeConfig, bundle) });
     });
 };

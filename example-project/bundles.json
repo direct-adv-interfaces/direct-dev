@@ -1,12 +1,12 @@
 [
     {
-        "target": "?.gemini-result.json",
-        "block": "b1",
-        "path": "example-project/common.blocks/b1/b1.gemini/test1.js"
+        "bundleName": "test1",
+        "source": "example-project/common.blocks/b1/b1.gemini/test1.test-case.js",
+        "path": "example-project/desktop.bundles/b1/gemini/test1"
     },
     {
-        "target": "?.gemini-result.json",
-        "block": "b1",
-        "path": "example-project/common.blocks/b1/b1.gemini/test2.js"
+        "bundleName": "test2",
+        "source": "example-project/common.blocks/b1/b1.gemini/test2.test-case.js",
+        "path": "example-project/desktop.bundles/b1/gemini/test2"
     }
 ]
