@@ -75,10 +75,10 @@ $ node direct-dev/lib/walker-cli -b block-name
 
 #### Параметры плагина
 
-- `resultPath` - путь, по которому будет сохранен результирующий JSON файл;
-- `baseBundlePath` - папка, в которой нужно собирать бандлы;
-- `devEntities` - дополнительные БЭМ-сущности, которые нужно добавить в декларацию каждого бандла;
-- `defaultBundleConfig` - содержимое по умолчанию;
+- `{String} resultPath` - путь, по которому будет сохранен результирующий JSON файл;
+- `{String} baseBundlePath` - папка, в которой нужно собирать бандлы;
+- `{String[]} devEntities` - дополнительные БЭМ-сущности, которые нужно добавить в декларацию каждого бандла;
+- `{Object} defaultBundleConfig` - содержимое по умолчанию.
 
 #### Пример использования
 
@@ -97,9 +97,49 @@ module.exports = {
 };
 ```
 
-### test-bundler
+### test-reporter
 
-### test-bundler
+Формирует отчет о результатах выполнения модульных тестов. Выводит информацию в консоль и в teamcity.
+
+#### Параметры плагина
+
+- `{String} reporter` - формат вывода результата: console|teamcity;
+- `{Boolean} displayEmpty` - признак: включать в отчет блоки без тестов;
+- `{Boolean} throwError` - признак: генерировать ошибку, если есть упавшие тесты.
+
+#### Пример использования
+
+```js
+module.exports = {
+    levels: [ ... ],
+    handler: 'direct-dev/lib/tools/walker-plugins/test-reporter',
+    handlerConfig: {
+        reporter: 'teamcity',
+        displayEmpty: true,
+        throwError: true
+    }
+};
+```
+
+### coverage-reporter
+
+Формирует отчет о покрытии кода тестами. Выводит информацию в консоль, в teamcity и в HTML файлы.
+
+#### Параметры плагина
+
+- `{String} reporter` - формат вывода результата: console|teamcity|html.
+
+#### Пример использования
+
+```js
+module.exports = {
+    levels: [ ... ],
+    handler: 'direct-dev/lib/tools/walker-plugins/coverage-reporter',
+    handlerConfig: {
+        reporter: 'teamcity'
+    }
+};
+```
 
 ## Создание собственных плагинов
 
