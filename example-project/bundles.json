@@ -1,12 +1,48 @@
 [
     {
-        "bundleName": "test1",
-        "source": "example-project/common.blocks/b1/b1.gemini/test1.test-case.js",
-        "path": "example-project/desktop.bundles/b1/gemini/test1"
+        "target": "?.test-result.json",
+        "block": "b1",
+        "path": "desktop.bundles/b1",
+        "entities": [
+            "dev-page",
+            "dev-page_type_test",
+            "b1",
+            "b1__e1"
+        ],
+        "hasTests": true
     },
     {
-        "bundleName": "test2",
-        "source": "example-project/common.blocks/b1/b1.gemini/test2.test-case.js",
-        "path": "example-project/desktop.bundles/b1/gemini/test2"
+        "target": "?.test-result.json",
+        "block": "b2",
+        "path": "desktop.bundles/b2",
+        "entities": [
+            "dev-page",
+            "dev-page_type_test",
+            "b2"
+        ],
+        "hasTests": true
+    },
+    {
+        "target": "?.test-result.json",
+        "block": "b3",
+        "path": "desktop.bundles/b3",
+        "entities": [
+            "dev-page",
+            "dev-page_type_test",
+            "b3",
+            "b3__el4"
+        ],
+        "hasTests": true
+    },
+    {
+        "target": "?.test-result.json",
+        "block": "dev-sandbox",
+        "path": "desktop.bundles/dev-sandbox",
+        "entities": [
+            "dev-page",
+            "dev-page_type_test",
+            "dev-sandbox"
+        ],
+        "hasTests": false
     }
 ]

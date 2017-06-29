@@ -9,7 +9,7 @@ module.exports = {
             handler: './walker-plugins/test-bundler',
             handlerConfig: {
                 resultPath: 'example-project/bundles.json',
-                baseBundlePath: 'example-project/desktop.bundles',
+                baseBundlePath: 'desktop.bundles',
                 devEntities: ['dev-page', 'dev-page_type_test'],
                 defaultBundleConfig: {
                     target: '?.test-result.json'
@@ -20,7 +20,7 @@ module.exports = {
             handler: './walker-plugins/gemini-bundler',
             handlerConfig: {
                 resultPath: 'example-project/bundles.json',
-                baseBundlePath: 'example-project/desktop.bundles',
+                baseBundlePath: 'desktop.bundles',
                 devEntities: ['dev-page', 'dev-page_type_test'],
                 defaultBundleConfig: {
                 }

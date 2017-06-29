@@ -34,7 +34,7 @@ function configureBundles(nodeConfig, bundle) {
 
         // dev bundles
         [techs.dev.sandbox],
-        [techs.dev.jsTest, { filter: filter }],
+        [techs.dev.jsTest, { /*filter: filter*/ }],
         [techs.dev.phantomTesting],
         //[techs.dev.emptyTestResult(true), { filter: filter }],
 
@@ -43,7 +43,7 @@ function configureBundles(nodeConfig, bundle) {
         [techs.dev.transporter('js', { noCache: true }), {
             target: '?.js',
             apply: [
-                transporterPlugins.coverage({ filter: filter.vinyl }),
+                transporterPlugins.coverage({ /*filter: filter.vinyl*/ }),
                 transporterPlugins.wrap(
                     { before: '\n// # outer-begin ${relative}\n', after: '\n// # outer-end ${relative}\n' })
             ]
@@ -55,12 +55,21 @@ function configureBundles(nodeConfig, bundle) {
     ]);
 
     //nodeConfig.addTargets(['?.sandbox.html', '?.test.html', '?.js', '?.css', '?.sandbox.js', '?.test.js']);
-    nodeConfig.addTargets(['?.gemini-result.json']);
+    nodeConfig.addTargets(['?.test-result.json']);
     //nodeConfig.addTargets(['?.js']);
 }
 
 function configureGeminiBundle(nodeConfig, bundle) {
     console.log(bundle);
+
+    nodeConfig.addTechs([
+        [techs.dev.dummy, { target: '?.js' }],
+        [techs.dev.dummy, { target: '?.test-case.js' }],
+        [techs.dev.dummy, { target: '?.css' }],
+        [techs.dev.devPageBemjson, { type: 'sandbox', js: '?.js', devJs: '?.test-case.js', css: '?.css' }]
+    ]);
+
+    nodeConfig.addTargets(['?.bemjson.js']);
 }
 
 module.exports = function(config) {
@@ -72,11 +81,11 @@ module.exports = function(config) {
 
     var bundlesConfig = require('../bundles.json');
 
-    // bundlesConfig.forEach(function(bundle) {
-    //     config.nodes(bundle.path, function(nodeConfig) { configureBundles(nodeConfig, bundle) });
-    // });
-
     bundlesConfig.forEach(function(bundle) {
-        config.nodes(bundle.path, function(nodeConfig) { configureGeminiBundle(nodeConfig, bundle) });
+        config.nodes(bundle.path, function(nodeConfig) { configureBundles(nodeConfig, bundle) });
     });
+
+    // bundlesConfig.forEach(function(bundle) {
+    //     config.nodes(bundle.path, function(nodeConfig) { configureGeminiBundle(nodeConfig, bundle) });
+    // });
 };
