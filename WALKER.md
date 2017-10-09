@@ -152,6 +152,7 @@ module.exports = {
 
 - `{String} reporter` - формат вывода результата: console|teamcity.
 - `{String[]} names` - список запрещенных названий блоков.
+- `{Boolean} throwError` - завершать ли процесс с ошибкой.
 
 #### Пример использования
 
@@ -160,8 +161,9 @@ module.exports = {
     levels: [ ... ],
     handler: 'direct-dev/lib/tools/walker-plugins/forbidden-blocks',
     handlerConfig: {
+        names: ['b4', 'b3', 'b2'],
         reporter: 'teamcity',
-        names: ['b4', 'b3', 'b2']
+        throwError: false
     }
 };
 ```

@@ -43,8 +43,9 @@ module.exports = {
         'forbidden-blocks': {
             handler: './walker-plugins/forbidden-blocks',
             handlerConfig: {
-                reporter: 'teamcity',
-                names: ['b4', 'b3', 'b2', 'b2']
+                names: ['b4', 'b3', 'b2', 'b2'],
+                reporter: 'console',
+                throwError: false
             }
         }
     }
