@@ -39,6 +39,13 @@ module.exports = {
                 dir: 'mimimi'
             },
             levels: ['example-project/desktop.bundles']
+        },
+        'forbidden-blocks': {
+            handler: './walker-plugins/forbidden-blocks',
+            handlerConfig: {
+                reporter: 'teamcity',
+                names: ['b4', 'b3', 'b2', 'b2']
+            }
         }
     }
 };

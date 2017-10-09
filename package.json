@@ -6,6 +6,7 @@
   "scripts": {
     "enb": "enb make --no-cache --dir example-project",
     "enb2": "enb make --dir example-project",
+    "forbidden-blocks": "node lib/walker-cli.js -p forbidden-blocks",
     "bundler": "node lib/walker-cli.js -p test-bundles",
     "test-report": "node lib/walker-cli.js -p test-report",
     "coverage-report": "node lib/walker-cli.js -p coverage-report",

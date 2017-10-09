@@ -144,6 +144,28 @@ module.exports = {
 };
 ```
 
+### forbidden-blocks
+
+Проверяет, что в проекте нет блоков с именами из заданного списка.
+
+#### Параметры плагина
+
+- `{String} reporter` - формат вывода результата: console|teamcity.
+- `{String[]} names` - список запрещенных названий блоков.
+
+#### Пример использования
+
+```js
+module.exports = {
+    levels: [ ... ],
+    handler: 'direct-dev/lib/tools/walker-plugins/forbidden-blocks',
+    handlerConfig: {
+        reporter: 'teamcity',
+        names: ['b4', 'b3', 'b2']
+    }
+};
+```
+
 ## Создание собственных плагинов
 
 Плагин представляет собой класс, реализующий два метода:
