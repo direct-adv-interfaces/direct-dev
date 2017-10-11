@@ -82,6 +82,7 @@ $ node direct-dev/lib/walker-cli -b block-name
 - `{String} baseBundlePath` - папка, в которой нужно собирать бандлы;
 - `{String[]} devEntities` - дополнительные БЭМ-сущности, которые нужно добавить в декларацию каждого бандла;
 - `{Object} defaultBundleConfig` - содержимое по умолчанию.
+— `{String} testTechnology` — имя технологии, в которой хранятся тесты. По умолчанию `test.js` 
 
 #### Пример использования
 
@@ -93,6 +94,7 @@ module.exports = {
         resultPath: 'example-project/bundles.json',
         baseBundlePath: 'example-project/desktop.bundles',
         devEntities: ['dev-page', 'dev-page_type_test'],
+        testTechnology: `test.js`,
         defaultBundleConfig: {
             target: '?.test-result.json'
         }
