@@ -8,7 +8,7 @@
 - [Плагины (технологии)](TECHS.md) для сборщика [ENB](https://ru.bem.info/toolbox/enb/) - выполняют сборку бандлов.
 - [Вспомогательные блоки](BLOCKS.md) для сборки тестов и страниц с примерами продуктовых блоков.
 
-**Внимание!** В версии 2.0.0 ENB технология `phantom-testing` перенесена в отдельный npm пакет [enb-phantom-testing](https://www.npmjs.com/package/enb-phantom-testing).
+**Внимание!** В версии 1.0.0 ENB технология `phantom-testing` перенесена в отдельный npm пакет [enb-phantom-testing](https://www.npmjs.com/package/enb-phantom-testing).
 
 ## Установка
 
