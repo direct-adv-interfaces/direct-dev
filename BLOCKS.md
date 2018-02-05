@@ -4,7 +4,7 @@
 
 - `dev-mocha` - содержит код библиотеки [Mocha](https://mochajs.org) (версия 1.4.1)
 - `dev-chai` - содержит код библиотеки [Chai](http://chaijs.com) (версия 3.5.0)
-- `dev-sinon` - содержит код библиотеки [Sinon](http://sinonjs.org) (версия 4.2.2)
+- `dev-sinon` - содержит код библиотеки [Sinon](http://sinonjs.org) (версия 3.3.0)
 - `dev-jquery` - содержит код библиотеки [jQuery](https://jquery.com) (версия 2.2.3)
 - `dev-page` - отладочная страница (для тестов и "песочницы")
 - `dev-sandbox`	- базовая функциональность "песочницы" ([подробнее](blocks/dev-sandbox/dev-sandbox.md))
