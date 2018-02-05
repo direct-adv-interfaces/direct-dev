@@ -1,6 +1,6 @@
 {
   "name": "direct-dev",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Yandex Direct dev tools",
   "main": "lib/index.js",
   "scripts": {
